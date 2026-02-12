@@ -48,7 +48,7 @@ const Experience: React.FC = () => {
               <div className="p-8 font-mono text-xs relative overflow-hidden h-[240px]">
                 <div className="space-y-4 group-hover:opacity-0 transition-opacity duration-300">
                   <div className="flex items-center gap-3 text-red-500 font-bold mb-4">
-                    <span className="animate-pulse">>>> THREAT_DETECTED</span>
+                    <span className="animate-pulse">&gt;&gt;&gt; THREAT_DETECTED</span>
                   </div>
                   <p className="opacity-80 leading-relaxed border-l-2 border-red-500/50 pl-4 uppercase">
                     "{log.symptom}"
