@@ -13,7 +13,7 @@ const AboutMe: React.FC = () => {
           <div className="absolute inset-0 bg-green-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative border-4 border-green-900 p-2 grayscale group-hover:grayscale-0 transition-all duration-700">
             <img 
-              src="profile-3.jpg" 
+              src="profile.jpg" 
               alt="Subject Asset" 
               className="w-full aspect-[4/5] object-cover"
               onError={(e) => (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Asset&background=000&color=22c55e&size=512'}

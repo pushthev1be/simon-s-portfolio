@@ -4,7 +4,7 @@ import { PERSONAL_INFO } from '../constants';
 
 const Hero: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const images = ['profile.jpg', 'profile-2.jpg', 'profile-3.jpg'];
+  const images = ['profile.jpg'];
 
   return (
     <section className="relative flex flex-col items-center text-center max-w-5xl mx-auto py-20 px-4 reveal">
