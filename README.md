@@ -1,7 +1,8 @@
-# Simon's Portfolio simonolawuyi.com
+# Simon's Portfolio
 
 Modern, responsive portfolio built with Vite + React. Includes an AI assistant powered by Gemini.
 
+# www.simonolawuyi.com
 ## Tech Stack
 
 - React 19 + TypeScript
