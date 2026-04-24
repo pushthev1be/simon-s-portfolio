@@ -1,4 +1,4 @@
-# Simon's Portfolio
+# Simon's Portfolio simonolawuyi.com
 
 Modern, responsive portfolio built with Vite + React. Includes an AI assistant powered by Gemini.
 
