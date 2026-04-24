@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS, EDUCATION } from '../constants';
+import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS, EDUCATION, CERTIFICATIONS } from '../constants';
 
 const ResumePage: React.FC = () => {
   const handlePrint = () => {
@@ -39,9 +39,11 @@ const ResumePage: React.FC = () => {
               <p><i className="fas fa-envelope mr-2 text-xs"></i> {PERSONAL_INFO.email}</p>
               <p><i className="fas fa-phone mr-2 text-xs"></i> {PERSONAL_INFO.phone}</p>
               <p><i className="fas fa-map-marker-alt mr-2 text-xs"></i> {PERSONAL_INFO.location}</p>
+              <p><i className="fas fa-globe mr-2 text-xs"></i> {PERSONAL_INFO.website}</p>
               <div className="flex gap-4 justify-start md:justify-end mt-2 print:hidden">
                 <a href={PERSONAL_INFO.linkedin} className="hover:text-white transition-colors"><i className="fab fa-linkedin"></i></a>
                 <a href={PERSONAL_INFO.github} className="hover:text-white transition-colors"><i className="fab fa-github"></i></a>
+                <a href={PERSONAL_INFO.website} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><i className="fas fa-globe"></i></a>
               </div>
             </div>
           </div>
@@ -157,18 +159,18 @@ const ResumePage: React.FC = () => {
             </section>
 
             {/* Certifications */}
-            <section className="print:hidden">
+            <section>
               <h2 className="text-xs font-black text-gray-500 uppercase tracking-[0.3em] mb-6 flex items-center gap-3">
-                Certs
-                <div className="h-[1px] flex-grow bg-gray-800"></div>
+                Certifications
+                <div className="h-[1px] flex-grow bg-gray-800 print:bg-gray-200"></div>
               </h2>
-              <ul className="text-[10px] space-y-3 text-gray-400 font-mono">
-                <li className="flex gap-2">
-                  <span className="text-green-500">_</span> Meta Front-End Dev
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-green-500">_</span> Meta Back-End Dev
-                </li>
+              <ul className="space-y-4">
+                {CERTIFICATIONS.map((cert, idx) => (
+                  <li key={idx} className="border-l-2 border-green-500/20 pl-4 py-1 print:border-gray-200">
+                    <p className="text-xs font-bold text-white print:text-black leading-snug">{cert.name}</p>
+                    <p className="text-[10px] font-mono text-gray-500 mt-1">ID: {cert.id}</p>
+                  </li>
+                ))}
               </ul>
             </section>
           </div>

@@ -31,6 +31,18 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface Education {
+  institution: string;
+  period: string;
+  degree: string;
+  location?: string;
+}
+
+export interface Certification {
+  name: string;
+  id: string;
+}
+
 export type ViewMode = 'gui' | 'terminal' | 'resume';
 
 export interface Message {

@@ -2,48 +2,70 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
 
+const PHILOSOPHY = [
+  { label: 'Ship', desc: 'Production deployments, not prototypes sitting in private repos.' },
+  { label: 'Systems', desc: 'Think in architecture — every component connects to a larger whole.' },
+  { label: 'Outcomes', desc: 'Motivated by real-world impact, not credentials or titles.' },
+  { label: 'Compound', desc: 'Build products that get smarter and more valuable over time.' },
+];
+
 const AboutMe: React.FC = () => {
   return (
-    <section className="relative py-20">
-      <div className="hud-corner hud-tl border-green-900"></div>
-      <div className="hud-corner hud-br border-green-900"></div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center p-10 bg-green-500/[0.02]">
-        <div className="relative group">
-          <div className="absolute inset-0 bg-green-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <div className="relative border-4 border-green-900 p-2 grayscale group-hover:grayscale-0 transition-all duration-700">
-            <img 
-              src="profile.jpg" 
-              alt="Subject Asset" 
-              className="w-full aspect-[4/5] object-cover"
-              onError={(e) => (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=Asset&background=000&color=22c55e&size=512'}
+    <section className="relative py-10 reveal">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+
+        {/* Left: photo + quick facts */}
+        <div className="space-y-6">
+          <div className="relative border-2 border-gray-200 overflow-hidden group">
+            <div className="hud-corner hud-tl border-green-400 !w-5 !h-5"></div>
+            <div className="hud-corner hud-br border-green-400 !w-5 !h-5"></div>
+            <img
+              src="profile.jpeg"
+              alt="Simon Olawuyi"
+              className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=S+O&background=16a34a&color=fff&size=512'}
             />
-            <div className="absolute top-4 left-4 bg-green-500 text-black px-2 py-1 text-[10px] font-black uppercase">
-              Asset Record #712
+            <div className="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 text-[9px] font-black uppercase tracking-widest">
+              Asset #712 // Active
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icon: 'fa-envelope', text: PERSONAL_INFO.email },
+              { icon: 'fa-phone', text: PERSONAL_INFO.phone },
+              { icon: 'fa-map-marker-alt', text: PERSONAL_INFO.location },
+              { icon: 'fa-globe', text: 'oracleai.live' },
+            ].map((item, i) => (
+              <div key={i} className="border border-gray-200 p-3 bg-gray-50 hover:border-green-400 hover:bg-green-50 transition-all group">
+                <i className={`fas ${item.icon} text-green-500 text-xs mb-1 block`}></i>
+                <p className="text-[10px] font-mono text-gray-600 truncate group-hover:text-green-700">{item.text}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="space-y-8 font-mono">
-          <h3 className="text-4xl font-black text-green-500 uppercase tracking-tighter">
-            Mission Philosophy
-          </h3>
-          <p className="text-lg text-green-800 leading-relaxed font-bold border-l-4 border-green-500 pl-6">
-            I don't write code to sit in repos. I build systems for impact. Mission success is defined by operational stability, high performance, and scalable architecture.
-          </p>
-          <div className="space-y-4 text-sm opacity-70">
-            <p>Subject excels in Backend Logic, System Orchestration, and Web3 Integration (Solana Spec).</p>
-            <p>Clearance level allows for rapid deployment on AWS, Render, and Distributed Nodes.</p>
+        {/* Right: philosophy */}
+        <div className="space-y-8">
+          <div>
+            <div className="text-[10px] text-green-600 font-black uppercase tracking-[0.4em] mb-2">Mission Brief</div>
+            <h3 className="text-4xl font-black tracking-tight text-slate-900 mb-4">
+              About
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-base border-l-4 border-green-500 pl-5">
+              {PERSONAL_INFO.summary}
+            </p>
           </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div className="border border-green-900 p-4">
-              <div className="text-green-500 font-black text-xl">IMPACT</div>
-              <div className="text-[10px] uppercase opacity-50">Real-world value generation</div>
-            </div>
-            <div className="border border-green-900 p-4">
-              <div className="text-green-500 font-black text-xl">LOGIC</div>
-              <div className="text-[10px] uppercase opacity-50">Systems over syntax</div>
+
+          <div>
+            <div className="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-4">Operating Principles</div>
+            <div className="space-y-3">
+              {PHILOSOPHY.map((p, i) => (
+                <div key={i} className="group flex gap-4 border border-gray-200 p-4 bg-white hover:border-green-400 hover:bg-green-50 hover:shadow-sm transition-all cursor-default">
+                  <div className="text-green-500 font-black text-xl w-20 shrink-0">{p.label}</div>
+                  <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-800 transition-colors">{p.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

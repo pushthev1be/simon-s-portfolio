@@ -1,72 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLASSIFIED // Simon Olawuyi Dossier</title>
+  <title>Simon Olawuyi — Full-Stack Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --terminal-green: #22c55e;
-      --terminal-dim: #166534;
-      --error-red: #ef4444;
+      --accent: #16a34a;
+      --accent-light: #22c55e;
+      --accent-dim: #bbf7d0;
     }
     body {
       font-family: 'JetBrains Mono', monospace;
-      background-color: #000000;
-      color: var(--terminal-green);
+      background-color: #ffffff;
+      color: #0f172a;
       overflow-x: hidden;
-    }
-    
-    /* CRT Scanline Effect */
-    body::before {
-      content: " ";
-      display: block;
-      position: fixed;
-      top: 0; left: 0; bottom: 0; right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      z-index: 1000;
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
-
-    body::after {
-      content: " ";
-      display: block;
-      position: fixed;
-      top: 0; left: 0; bottom: 0; right: 0;
-      background: rgba(18, 16, 16, 0.1);
-      opacity: 0;
-      z-index: 1001;
-      pointer-events: none;
-      animation: flicker 0.15s infinite;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0.27861; }
-      5% { opacity: 0.34769; }
-      10% { opacity: 0.23604; }
-      15% { opacity: 0.90626; }
-      20% { opacity: 0.18128; }
-      25% { opacity: 0.83891; }
-      30% { opacity: 0.65583; }
-      35% { opacity: 0.57807; }
-      40% { opacity: 0.26559; }
-      45% { opacity: 0.84693; }
-      50% { opacity: 0.96019; }
-      55% { opacity: 0.08523; }
-      60% { opacity: 0.71056; }
-      65% { opacity: 0.73477; }
-      70% { opacity: 0.85823; }
-      75% { opacity: 0.13329; }
-      80% { opacity: 0.90651; }
-      85% { opacity: 0.11603; }
-      90% { opacity: 0.16236; }
-      95% { opacity: 0.5698; }
-      100% { opacity: 0.77387; }
     }
 
     /* Tactical HUD Frames */
@@ -74,18 +25,18 @@
       position: absolute;
       width: 20px;
       height: 20px;
-      border: 2px solid var(--terminal-dim);
+      border: 2px solid #d1d5db;
     }
     .hud-tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
     .hud-tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
     .hud-bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
     .hud-br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
 
-    /* Reveal Animation Classes */
+    /* Reveal Animation */
     .reveal {
       opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform: translateY(12px);
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .reveal.active {
       opacity: 1;
@@ -93,7 +44,7 @@
     }
 
     .shimmer-text {
-      background: linear-gradient(90deg, var(--terminal-dim) 25%, var(--terminal-green) 50%, var(--terminal-dim) 75%);
+      background: linear-gradient(90deg, #166534 25%, #16a34a 50%, #166534 75%);
       background-size: 200% auto;
       background-clip: text;
       -webkit-background-clip: text;
@@ -108,8 +59,8 @@
 
     @keyframes stamp-appear {
       0% { opacity: 0; transform: scale(3) rotate(-15deg); filter: blur(10px); }
-      15% { opacity: 0.6; transform: scale(1) rotate(-15deg); filter: blur(0px); }
-      85% { opacity: 0.6; transform: scale(1) rotate(-15deg); filter: blur(0px); }
+      15% { opacity: 0.15; transform: scale(1) rotate(-15deg); filter: blur(0px); }
+      85% { opacity: 0.15; transform: scale(1) rotate(-15deg); filter: blur(0px); }
       100% { opacity: 0; transform: scale(0.9) rotate(-15deg); filter: blur(2px); }
     }
 
@@ -120,14 +71,14 @@
       padding: 4px 12px;
       text-transform: uppercase;
       transform: rotate(-15deg);
-      opacity: 0.2;
+      opacity: 0.12;
       pointer-events: none;
       user-select: none;
     }
 
     .classified-stamp-animated {
       font-weight: 900;
-      border: 6px solid #ef4444;
+      border: 5px solid #ef4444;
       color: #ef4444;
       padding: 8px 24px;
       text-transform: uppercase;
@@ -135,11 +86,37 @@
       pointer-events: none;
       user-select: none;
       opacity: 0;
-      animation: stamp-appear 8s infinite cubic-bezier(0.19, 1, 0.22, 1);
-      background: rgba(239, 68, 68, 0.05);
+      animation: stamp-appear 10s infinite cubic-bezier(0.19, 1, 0.22, 1);
+      background: rgba(239, 68, 68, 0.04);
       letter-spacing: 0.2em;
       white-space: nowrap;
-      box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.97) translateY(4px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes progress {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    @keyframes load {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    /* Scanline for terminal only */
+    .scanline::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 1;
     }
   </style>
 <script type="importmap">

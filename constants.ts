@@ -1,5 +1,5 @@
 
-import { Project, Experience, SkillGroup, DebugLog } from './types';
+import { Project, Experience, SkillGroup, DebugLog, Education, Certification } from './types';
 
 export const PERSONAL_INFO = {
   name: "Simon Abayomi Olawuyi",
@@ -7,47 +7,49 @@ export const PERSONAL_INFO = {
   location: "Indianapolis, IN",
   phone: "(317) 531-0381",
   email: "nomispeter12@gmail.com",
-  summary: "I’m a full-stack developer who enjoys building real systems, not just projects that sit in a repo. I like taking ambitious ideas — crypto gaming platforms, AI-powered tools, peer-to-peer marketplaces — and turning them into working products with real logic behind them. I naturally think in systems. When I build something, I focus on how everything connects: backend architecture, validation flows, real-time interactions, payment logic, performance, and scalability. My strengths are backend logic, API design, Web3 integrations (especially Solana), and turning complex concepts into structured, deployable applications.",
+  summary: "Self-taught full-stack engineer who ships production-grade AI systems, not prototypes. Creator of Oracle Odds AI — a live sports prediction platform with a self-correcting mathematical engine, adaptive learning loop, and international user base — built entirely solo from architecture to deployment. Specializes in backend systems, AI/ML integration, predictive modeling, and building revenue-generating products end-to-end. Motivated by outcomes, not credentials.",
   linkedin: "https://linkedin.com",
-  github: "https://github.com",
+  github: "https://github.com/pushthev1be",
+  website: "https://www.oracleai.live",
 };
 
 export const PROJECTS: Project[] = [
   {
-    title: "Oracle Odds AI 🔮",
-    description: "A professional-grade sports prediction platform that combines real-time data with Gemini 2.0 Flash search-grounding to generate high-accuracy betting insights.",
-    link: "https://oracle-ai-ulvr.onrender.com",
-    tags: ["React 19", "Gemini 2.0", "Search Grounding", "Tailwind v4", "TypeScript"],
+    title: "Oracle Odds AI",
+    description: "Production live sports prediction platform with a self-correcting mathematical engine and international user base (US, Nigeria, Ghana). Solo-built, Stripe-monetized, fully deployed.",
+    link: "https://www.oracleai.live",
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Gemini Flash/Pro", "Docker"],
     features: [
-      "Search-Grounded AI using Google Search Retrieval for live roster/injury verification",
-      "Live Match Engine for Premier League, Champions League, NBA, and ATP Tour",
-      "Dynamic Prop Analysis based on reasoned logic and latest 24hr performance data",
-      "Parallel API fetching with resilient greedy fallback to 2026-aligned data",
-      "Production-ready architecture with automated environment detection"
+      "Poisson distribution + Dixon-Coles modeling with odds-derived lambdas (70/30 team strength weighting), xG regression, and form-factor adjustments across Premier League, Champions League, NBA, and ATP Tour",
+      "Self-correcting adaptive learning loop — calibration bias updates from settled prediction residuals, EMA-weighted team strength blends, and automated model promotion so accuracy compounds over time",
+      "Gemini Flash AI enrichment with batch processing (up to 15 matches), live web search grounding for injury/roster verification, and training examples drawn from past prediction hits and misses",
+      "18 backend microservices, 18 Supabase edge functions, 13 external API integrations (ESPN, The-Odds-API, Football-Data.org, Smarkets, Pinnacle/BetExplorer, API-Sports) with a 9-table PostgreSQL schema",
+      "Stripe-backed tiered subscription system (Free / Basic / Premium / Elite) with daily credit limits, tier-gated features, and Telegram bot + Twitter/X automated morning predictions and evening results",
+      "Multi-key Gemini API rotation (round-robin) for uninterrupted load handling; self-hosted dev infra on repurposed Dell laptop running Debian 13 with Docker, Supabase, PostgreSQL, Nextcloud, and Uptime Kuma at zero additional software cost",
+      "Automated social content flywheel (TikTok, Twitter/X, Telegram) built around daily accuracy verification as a credibility-first growth strategy"
+    ]
+  },
+  {
+    title: "DevBrain",
+    description: "Developer Knowledge CLI — a daemon-based code intelligence tool that detects anti-patterns in real time, learns from your GitHub history, and surfaces solutions through a React dashboard with terminal emulation.",
+    tags: ["Node.js", "TypeScript", "React", "Express.js", "SQLite", "GitHub API", "Chokidar"],
+    features: [
+      "Modular monorepo (packages/cli, packages/core, apps/dashboard) with a Chokidar-powered file watcher and debounced real-time pattern detection across 10+ code patterns (async/await, OOP, functional, error handling)",
+      "Daemon-based anti-pattern detector flagging callback hell, missing error handling, and deep nesting; integrated GitHub API to learn from repo commits and closed issues with confidence scoring",
+      "Express.js API with SQLite persistence and a React dashboard with terminal emulation and intelligent error-to-solution matching"
     ]
   },
   {
     title: "StudyGenius AI",
-    description: "Transform study notes and documents into interactive summaries, flashcards, and board-style quizzes with AI.",
+    description: "Transform study notes and documents into interactive summaries, flashcards, and board-style quizzes with AI. Built with spaced-repetition retention tracking and multi-format performance analytics.",
     link: "https://studyboy-v1.onrender.com",
-    tags: ["React", "Gemini API", "Vite", "Tailwind CSS"],
+    tags: ["React", "Gemini API", "Vite", "Tailwind CSS", "TypeScript"],
     features: [
-      "AI-generated study guides with structured sections",
-      "Flashcards with spaced-repetition ratings",
-      "Board-style quiz sessions with history and review",
+      "AI-generated study guides with structured sections and domain-specific modes (PA, Nursing, Medical, GenEd)",
+      "Flashcards with spaced-repetition ratings and retention tracking",
+      "Board-style quiz sessions with history, review, and performance analytics",
       "Past upload library with quick reopen/download",
-      "Domain-specific modes (PA, Nursing, Medical, GenEd)"
-    ]
-  },
-  {
-    title: "PushFundz Crypto Lending Platform",
-    description: "Design secure loan lifecycle with multi-chain support (ETH + SOL).",
-    tags: ["Solidity", "Web3.js", "Ethereum", "Solana", "Docker"],
-    features: [
-      "Built tiered membership and gamified reward system",
-      "Wrote and tested Solidity smart contracts",
-      "Implemented on/off-ramp support",
-      "Used microservices & containerized deployment (Docker, NGINX)"
+      "Multi-format document input support"
     ]
   }
 ];
@@ -140,7 +142,7 @@ export const DEBUG_LOGS: DebugLog[] = [
     difficulty: 3,
     symptom: "Dockerfile paths not matching rootDir configuration in deployment config.",
     investigation: "Mismatch between local dev structure and the expected build structure on Render.",
-    resolution: "Aligned package.json copies and aligned file paths with the project's monorepo structure for seamless deployment.",
+    resolution: "Aligned package.json copies and file paths with the project's monorepo structure for seamless deployment.",
     tags: ["Docker", "Config", "Render"]
   },
   {
@@ -156,31 +158,39 @@ export const DEBUG_LOGS: DebugLog[] = [
 ];
 
 export const SKILLS: SkillGroup[] = [
-  { category: "Languages", items: ["JavaScript (ES6+)", "TypeScript", "Python", "SQL"] },
-  { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
-  { category: "Backend", items: ["Node.js", "Express.js", "FastAPI", "Supabase Functions", "REST", "GraphQL"] },
-  { category: "Infra & DevOps", items: ["Docker", "NGINX", "GitHub Actions", "Render", "AWS (EC2/S3/RDS)", "CI/CD"] },
-  { category: "Databases", items: ["PostgreSQL", "MongoDB", "Prisma ORM", "SQLAlchemy", "Redis"] },
-  { category: "AI/ML", items: ["OpenAI API", "GPT-3.5/4", "OpenRouter", "Semantic Search", "Gemini API"] },
-  { category: "Web3", items: ["Ethereum", "Solana", "Smart Contracts", "Web3.js", "ethers.js"] }
+  { category: "Languages", items: ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "Bash"] },
+  { category: "Frontend", items: ["React 19", "Next.js", "Vite", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
+  { category: "Backend", items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "GraphQL", "WebSockets", "Async Job Processing"] },
+  { category: "AI / ML", items: ["Gemini Flash/Pro", "OpenAI GPT-4", "RAG", "Semantic Search & Embeddings", "Predictive Modeling", "Poisson/Dixon-Coles", "Monte Carlo Simulation"] },
+  { category: "Infra & DevOps", items: ["Docker", "Docker Compose", "NGINX", "AWS (EC2/S3/RDS)", "Render", "GitHub Actions", "CI/CD", "Self-hosted Linux servers"] },
+  { category: "Databases", items: ["PostgreSQL", "Supabase", "MongoDB", "SQLite", "Redis", "Prisma", "SQLAlchemy"] },
+  { category: "Blockchain / Web3", items: ["Ethereum", "Solana", "Solidity Smart Contracts", "Web3.js", "ethers.js", "Multi-chain Development"] },
 ];
 
 export const EXPERIENCE: Experience[] = [
   {
-    company: "Independent Full-Stack Developer",
-    role: "Independent Full-Stack Developer",
+    company: "Independent",
+    role: "Full-Stack Engineer",
     period: "2023 - Present",
     location: "Remote",
     bullets: [
-      "Delivered production-grade full-stack apps for AI, blockchain, and web platforms",
-      "Deployed infra with Docker, Render, AWS (EC2/S3), GitHub Actions",
-      "Implemented robust auth, async jobs, APIs, and backend optimization",
-      "Managed end-to-end builds: design, code, deploy, debug, repeat"
+      "Shipped production full-stack applications across AI, blockchain, and Web3 using Next.js, TypeScript, Prisma, and ethers.js — all publicly accessible and serving real users.",
+      "Managed cloud infrastructure with Docker, AWS EC2/S3/RDS, Render, and GitHub Actions CI/CD; implemented authentication flows, async job processing, and REST/GraphQL APIs.",
+      "Operated the complete product lifecycle independently — architecture, development, deployment, monitoring via CloudWatch, and continuous iteration."
     ]
   }
 ];
 
-export const EDUCATION = [
-  { institution: "Ivy Tech Community College", period: "2024 - Present", degree: "A.A.S., Electrical Engineering" },
-  { institution: "Self-Directed Software Engineering Education", period: "2021 - Present", degree: "Software Engineering" }
+export const EDUCATION: Education[] = [
+  {
+    institution: "Ivy Tech Community College",
+    period: "2024 - Present",
+    degree: "A.A.S., Electrical Engineering",
+    location: "Indianapolis, IN"
+  }
+];
+
+export const CERTIFICATIONS: Certification[] = [
+  { name: "Meta Front-End Developer Professional Certificate", id: "OTUKNS34F9DV" },
+  { name: "Meta Back-End Developer Professional Certificate", id: "JLXU4IAKHBP3" },
 ];

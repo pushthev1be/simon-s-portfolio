@@ -1,84 +1,150 @@
 
-import React from 'react';
-import { DEBUG_LOGS, EDUCATION } from '../constants';
+import React, { useState } from 'react';
+import { DEBUG_LOGS, EDUCATION, CERTIFICATIONS } from '../constants';
+
+const DIFF_LABELS = ['', 'Trivial', 'Easy', 'Moderate', 'Hard', 'Critical'];
 
 const Experience: React.FC = () => {
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+
+  const toggle = (idx: number) => setExpandedIdx(prev => prev === idx ? null : idx);
+
   return (
-    <section id="experience" className="space-y-32 py-20 relative">
-      <div className="reveal relative">
-        <div className="flex items-center gap-6 mb-16 border-b-4 border-green-900 pb-4">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">INCIDENT_LOGS</h2>
-          <div className="flex-grow"></div>
-          
-          {/* Animated Classified Stamp */}
-          <div className="hidden sm:block absolute -top-8 right-0 pointer-events-none">
-            <div className="classified-stamp-animated text-3xl" style={{ animationDelay: '4s' }}>TOP SECRET // NOFORN</div>
+    <section id="experience" className="space-y-24 py-10 relative">
+
+      {/* Debug Logs */}
+      <div className="reveal">
+        <div className="flex items-center gap-6 mb-8 border-l-8 border-green-500 pl-5 relative">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">DEBUG LOGS</h2>
+            <div className="text-[10px] text-gray-400 uppercase tracking-[0.4em] mt-1">
+              Real bugs. Real fixes. Real commits.
+            </div>
           </div>
-          
-          <div className="classified-stamp opacity-40 sm:hidden">Top Secret</div>
+          <div className="absolute -top-8 right-0 pointer-events-none hidden md:block">
+            <div className="classified-stamp-animated text-xl" style={{ animationDelay: '5s' }}>TOP SECRET</div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {DEBUG_LOGS.map((log, idx) => (
-            <div 
-              key={idx} 
-              className="group relative bg-black border-2 border-green-900 transition-all duration-500 hover:border-green-500 hover:shadow-[0_0_50px_rgba(34,197,94,0.1)] reveal"
-            >
-              <div className="hud-corner hud-tl border-green-900 group-hover:border-green-500"></div>
-              <div className="hud-corner hud-tr border-green-900 group-hover:border-green-500"></div>
-              <div className="hud-corner hud-bl border-green-900 group-hover:border-green-500"></div>
-              <div className="hud-corner hud-br border-green-900 group-hover:border-green-500"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {DEBUG_LOGS.map((log, idx) => {
+            const isOpen = expandedIdx === idx;
+            return (
+              <div
+                key={idx}
+                className={`group relative bg-white border-2 transition-all duration-300 cursor-pointer ${
+                  isOpen ? 'border-green-500 shadow-md shadow-green-50' : 'border-gray-200 hover:border-green-400 hover:shadow-sm'
+                }`}
+                onClick={() => toggle(idx)}
+              >
+                <div className="hud-corner hud-tl border-gray-200 group-hover:border-green-400 transition-colors"></div>
+                <div className="hud-corner hud-br border-gray-200 group-hover:border-green-400 transition-colors"></div>
 
-              <div className="p-8 border-b-2 border-green-900 bg-green-500/5 flex justify-between items-center">
-                <div className="space-y-1">
-                  <div className="flex gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className={`w-3 h-3 border border-green-500 ${i < log.difficulty ? 'bg-green-500' : 'bg-transparent'}`}></div>
-                    ))}
+                {/* Card header */}
+                <div className="p-5 border-b-2 border-gray-100 group-hover:border-green-100 transition-colors flex justify-between items-start gap-4">
+                  <div className="space-y-2 min-w-0">
+                    {/* Difficulty */}
+                    <div className="flex gap-1 items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className={`w-2.5 h-2.5 border ${
+                          i < log.difficulty
+                            ? 'bg-green-500 border-green-500'
+                            : 'border-gray-300 bg-transparent'
+                        }`}></div>
+                      ))}
+                      <span className="text-[9px] text-gray-400 ml-2 uppercase font-bold">{DIFF_LABELS[log.difficulty]}</span>
+                    </div>
+                    <h3 className="text-base font-black text-slate-900 leading-snug">{log.title}</h3>
+                    <div className="text-[10px] font-mono text-gray-400 uppercase">
+                      {log.repository} // {log.commit}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-black uppercase text-green-500">
-                    REPORT: {log.title}
-                  </h3>
-                  <div className="text-[10px] font-mono opacity-50 uppercase tracking-widest">
-                    REPO: {log.repository} // HASH: {log.commit}
+                  <div className={`text-gray-400 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+                    <i className="fas fa-chevron-down text-xs"></i>
                   </div>
                 </div>
-              </div>
 
-              <div className="p-8 font-mono text-xs relative overflow-hidden h-[240px]">
-                <div className="space-y-4 group-hover:opacity-0 transition-opacity duration-300">
-                  <div className="flex items-center gap-3 text-red-500 font-bold mb-4">
-                    <span className="animate-pulse">&gt;&gt;&gt; THREAT_DETECTED</span>
+                {/* Symptom always visible */}
+                <div className="p-5">
+                  <div className="flex gap-2 items-center mb-2">
+                    <span className="text-red-500 text-[10px] font-black uppercase tracking-widest">Symptom</span>
                   </div>
-                  <p className="opacity-80 leading-relaxed border-l-2 border-red-500/50 pl-4 uppercase">
-                    "{log.symptom}"
+                  <p className="text-gray-600 text-xs leading-relaxed border-l-2 border-red-300 pl-3">
+                    {log.symptom}
                   </p>
                 </div>
 
-                <div className="absolute inset-0 bg-green-500/5 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col p-8 translate-y-4 group-hover:translate-y-0">
-                  <div className="flex items-center gap-3 text-green-400 font-bold mb-6">
-                    <i className="fas fa-check-double"></i>
-                    <span className="tracking-[0.2em] uppercase">Resolution Verified</span>
+                {/* Resolution — expanded only */}
+                {isOpen && (
+                  <div className="px-5 pb-5 border-t-2 border-green-100 pt-4 bg-green-50">
+                    <div className="flex gap-2 items-center mb-2">
+                      <i className="fas fa-check-double text-green-600 text-xs"></i>
+                      <span className="text-green-700 text-[10px] font-black uppercase tracking-widest">Resolution</span>
+                    </div>
+                    <p className="text-gray-700 text-xs leading-relaxed mb-4">
+                      {log.resolution}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {log.tags.map(tag => (
+                        <span key={tag} className="text-[9px] border border-green-300 bg-white text-green-700 px-2 py-0.5 font-bold">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-green-200 text-sm leading-relaxed mb-8 flex-grow">
-                    {log.resolution}
-                  </p>
-                  <div className="flex flex-wrap gap-2 opacity-50">
-                    {log.tags.map(tag => (
-                      <span key={tag} className="text-[10px] border border-green-500 px-2 py-1">#{tag}</span>
-                    ))}
-                  </div>
+                )}
+
+                {/* Progress bar */}
+                <div className="h-0.5 bg-gray-100 overflow-hidden">
+                  <div className="h-full bg-green-400" style={{ animation: 'progress 12s linear infinite' }}></div>
                 </div>
               </div>
-
-              <div className="bg-green-900/20 h-1">
-                <div className="h-full bg-green-500 animate-[progress_10s_linear_infinite]"></div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-      <style>{`@keyframes progress { 0% { width: 0; } 100% { width: 100%; } }`}</style>
+
+      {/* Education & Certs */}
+      <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Education */}
+        <div>
+          <div className="border-l-8 border-green-500 pl-5 mb-6">
+            <h2 className="text-3xl font-black tracking-tight text-slate-900">EDUCATION</h2>
+          </div>
+          <div className="space-y-4">
+            {EDUCATION.map((edu, idx) => (
+              <div key={idx} className="border border-gray-200 p-5 bg-white hover:border-green-400 hover:bg-green-50 transition-all">
+                <div className="text-[10px] font-mono text-gray-400 mb-1">{edu.period}</div>
+                <h4 className="text-base font-black text-slate-900">{edu.institution}</h4>
+                <p className="text-sm text-gray-500 italic">{edu.degree}</p>
+                {edu.location && <p className="text-[10px] text-gray-400 mt-1">{edu.location}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div>
+          <div className="border-l-8 border-green-500 pl-5 mb-6">
+            <h2 className="text-3xl font-black tracking-tight text-slate-900">CERTS</h2>
+          </div>
+          <div className="space-y-4">
+            {CERTIFICATIONS.map((cert, idx) => (
+              <div key={idx} className="border border-gray-200 p-5 bg-white hover:border-green-400 hover:bg-green-50 transition-all group">
+                <div className="flex gap-3 items-start">
+                  <div className="w-8 h-8 bg-green-500 text-white flex items-center justify-center shrink-0 mt-0.5">
+                    <i className="fas fa-certificate text-xs"></i>
+                  </div>
+                  <div>
+                    <p className="text-sm font-black text-slate-900 leading-snug">{cert.name}</p>
+                    <p className="text-[10px] font-mono text-gray-400 mt-1">ID: {cert.id}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

@@ -5,50 +5,60 @@ import { SKILLS } from '../constants';
 const Skills: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const categories = SKILLS.map(s => s.category);
+  const visible = SKILLS.filter(s => activeCategory === null || s.category === activeCategory);
 
   return (
-    <section>
-      <div className="flex items-center gap-4 mb-12">
-        <h2 className="text-3xl font-bold">Skills & Stack</h2>
-        <div className="h-[1px] flex-grow bg-gray-800"></div>
+    <section className="py-10 reveal">
+      {/* Header */}
+      <div className="flex items-center gap-6 mb-8 border-l-8 border-green-500 pl-5">
+        <div>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">SKILLS</h2>
+          <div className="text-[10px] text-gray-400 uppercase tracking-[0.4em] mt-1">Technical Arsenal</div>
+        </div>
       </div>
 
+      {/* Category filter tabs */}
       <div className="flex flex-wrap gap-2 mb-8">
         <button
           onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 rounded-full text-sm transition-all ${
+          className={`px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all ${
             activeCategory === null
-              ? 'bg-green-500 text-gray-950 font-bold'
-              : 'bg-gray-900 text-gray-400 border border-gray-800 hover:border-gray-700'
+              ? 'bg-green-500 text-white border-green-500'
+              : 'text-gray-500 border-gray-300 hover:border-green-400 hover:text-green-600'
           }`}
         >
           All
         </button>
-        {categories.map((cat) => (
+        {SKILLS.map(s => (
           <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-full text-sm transition-all ${
-              activeCategory === cat
-                ? 'bg-green-500 text-gray-950 font-bold'
-                : 'bg-gray-900 text-gray-400 border border-gray-800 hover:border-gray-700'
+            key={s.category}
+            onClick={() => setActiveCategory(prev => prev === s.category ? null : s.category)}
+            className={`px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all ${
+              activeCategory === s.category
+                ? 'bg-green-500 text-white border-green-500'
+                : 'text-gray-500 border-gray-300 hover:border-green-400 hover:text-green-600'
             }`}
           >
-            {cat}
+            {s.category}
           </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {SKILLS.filter(s => activeCategory === null || s.category === activeCategory).flatMap(s => s.items).map((skill, idx) => (
-          <div
-            key={idx}
-            className="group px-4 py-3 bg-gray-900/40 border border-gray-800 rounded-xl text-center transition-all duration-300 hover:border-green-500/40 hover:bg-gray-900 hover:scale-105 hover:-rotate-1 active:scale-95 cursor-default animate-in fade-in zoom-in"
-          >
-            <span className="text-sm font-medium text-gray-400 group-hover:text-green-400 transition-colors">
-              {skill}
-            </span>
+      {/* Skills grid — grouped by category */}
+      <div className="space-y-6">
+        {visible.map((group, gi) => (
+          <div key={gi} className="group">
+            <div className="text-[10px] font-black text-green-600 uppercase tracking-[0.4em] mb-3">{group.category}</div>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((skill, si) => (
+                <div
+                  key={si}
+                  className="px-3 py-2 border border-gray-200 bg-white text-sm text-gray-700 font-medium hover:border-green-400 hover:bg-green-50 hover:text-green-700 hover:-translate-y-0.5 hover:shadow-sm transition-all cursor-default"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
