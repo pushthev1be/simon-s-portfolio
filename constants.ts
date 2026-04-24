@@ -8,82 +8,122 @@ export const PERSONAL_INFO = {
   phone: "(317) 531-0381",
   email: "nomispeter12@gmail.com",
   summary: "Self-taught full-stack engineer who ships production-grade AI systems, not prototypes. Creator of Oracle Odds AI — a live sports prediction platform with a self-correcting mathematical engine, adaptive learning loop, and international user base — built entirely solo from architecture to deployment. Specializes in backend systems, AI/ML integration, predictive modeling, and building revenue-generating products end-to-end. Motivated by outcomes, not credentials.",
-  linkedin: "https://linkedin.com",
+  linkedin: "https://www.linkedin.com/in/simon-olawuyi-01986a316/",
   github: "https://github.com/pushthev1be",
   website: "https://www.oracleai.live",
 };
 
+export const STATS = [
+  { value: 18, suffix: '', label: 'Microservices' },
+  { value: 13, suffix: '', label: 'API Integrations' },
+  { value: 3, suffix: '', label: 'Countries' },
+  { value: 2, suffix: '+', label: 'Years Shipped' },
+];
+
+export const PHILOSOPHY = [
+  { label: 'Ship', desc: 'Production deployments, not prototypes sitting in private repos.' },
+  { label: 'Systems', desc: 'Think in architecture — every component connects to a larger whole.' },
+  { label: 'Outcomes', desc: 'Motivated by real-world impact, not credentials or titles.' },
+  { label: 'Compound', desc: 'Build products that get smarter and more valuable over time.' },
+];
+
 export const PROJECTS: Project[] = [
   {
+    id: '001',
     title: "Oracle Odds AI",
+    label: "Flagship — Live & Monetized",
     description: "Production live sports prediction platform with a self-correcting mathematical engine and international user base (US, Nigeria, Ghana). Solo-built, Stripe-monetized, fully deployed.",
     link: "https://www.oracleai.live",
-    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Gemini Flash/Pro", "Docker"],
+    featured: true,
+    image: "/uploads/Screenshot 2026-04-14 010129.png",
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Gemini AI", "Docker"],
     features: [
-      "Poisson distribution + Dixon-Coles modeling with odds-derived lambdas (70/30 team strength weighting), xG regression, and form-factor adjustments across Premier League, Champions League, NBA, and ATP Tour",
-      "Self-correcting adaptive learning loop — calibration bias updates from settled prediction residuals, EMA-weighted team strength blends, and automated model promotion so accuracy compounds over time",
-      "Gemini Flash AI enrichment with batch processing (up to 15 matches), live web search grounding for injury/roster verification, and training examples drawn from past prediction hits and misses",
-      "18 backend microservices, 18 Supabase edge functions, 13 external API integrations (ESPN, The-Odds-API, Football-Data.org, Smarkets, Pinnacle/BetExplorer, API-Sports) with a 9-table PostgreSQL schema",
-      "Stripe-backed tiered subscription system (Free / Basic / Premium / Elite) with daily credit limits, tier-gated features, and Telegram bot + Twitter/X automated morning predictions and evening results",
-      "Multi-key Gemini API rotation (round-robin) for uninterrupted load handling; self-hosted dev infra on repurposed Dell laptop running Debian 13 with Docker, Supabase, PostgreSQL, Nextcloud, and Uptime Kuma at zero additional software cost",
-      "Automated social content flywheel (TikTok, Twitter/X, Telegram) built around daily accuracy verification as a credibility-first growth strategy"
+      "Poisson + Dixon-Coles modeling with xG regression across Premier League, Champions League, NBA, and ATP Tour",
+      "Self-correcting adaptive learning loop — EMA-weighted team strength, calibration bias from settled residuals",
+      "Gemini Flash AI with batch processing (15 matches), live web search for injury/roster verification",
+      "18 backend microservices, 13 external API integrations, 9-table PostgreSQL schema",
+      "Stripe tiered subscriptions (Free/Basic/Premium/Elite) + Telegram bot + Twitter/X automation",
+      "Multi-key API rotation; self-hosted on repurposed Dell running Debian 13 at zero additional software cost",
     ]
   },
   {
-    title: "DevBrain",
-    description: "Developer Knowledge CLI — a daemon-based code intelligence tool that detects anti-patterns in real time, learns from your GitHub history, and surfaces solutions through a React dashboard with terminal emulation.",
-    tags: ["Node.js", "TypeScript", "React", "Express.js", "SQLite", "GitHub API", "Chokidar"],
+    id: '002',
+    title: "CrossCheck",
+    label: "Socratic AI Tutor",
+    description: "AI-powered Socratic study companion that guides students through topics using follow-up questions instead of giving answers — building real understanding, not just recall.",
+    link: undefined,
+    featured: false,
+    image: "/uploads/Screenshot 2026-04-19 211742.png",
+    tags: ["React", "Gemini API", "TypeScript", "Tailwind CSS"],
     features: [
-      "Modular monorepo (packages/cli, packages/core, apps/dashboard) with a Chokidar-powered file watcher and debounced real-time pattern detection across 10+ code patterns (async/await, OOP, functional, error handling)",
-      "Daemon-based anti-pattern detector flagging callback hell, missing error handling, and deep nesting; integrated GitHub API to learn from repo commits and closed issues with confidence scoring",
-      "Express.js API with SQLite persistence and a React dashboard with terminal emulation and intelligent error-to-solution matching"
+      "Socratic dialogue engine — AI never gives direct answers, only targeted follow-up questions that deepen reasoning",
+      "Topic-based progress tracking with visual completion states per chapter and subject",
+      "Timed session mode with live word-count feedback and structured answer prompts",
+      "Domain-specific modes (Biology, Nursing, PA, Medical) with adaptive difficulty",
     ]
   },
   {
+    id: '003',
     title: "StudyGenius AI",
-    description: "Transform study notes and documents into interactive summaries, flashcards, and board-style quizzes with AI. Built with spaced-repetition retention tracking and multi-format performance analytics.",
+    label: "AI Study Platform",
+    description: "Transform study notes and documents into interactive summaries, flashcards, and board-style quizzes. Built with spaced-repetition retention tracking and multi-format analytics.",
     link: "https://studyboy-v1.onrender.com",
+    featured: false,
+    image: undefined,
     tags: ["React", "Gemini API", "Vite", "Tailwind CSS", "TypeScript"],
     features: [
-      "AI-generated study guides with structured sections and domain-specific modes (PA, Nursing, Medical, GenEd)",
+      "AI-generated study guides with domain-specific modes (PA, Nursing, Medical, GenEd)",
       "Flashcards with spaced-repetition ratings and retention tracking",
       "Board-style quiz sessions with history, review, and performance analytics",
-      "Past upload library with quick reopen/download",
-      "Multi-format document input support"
+    ]
+  },
+  {
+    id: '004',
+    title: "DevBrain",
+    label: "Developer Intelligence CLI",
+    description: "Daemon-based code intelligence tool that detects anti-patterns in real time, learns from your GitHub history, and surfaces solutions through a React dashboard with terminal emulation.",
+    link: undefined,
+    featured: false,
+    image: undefined,
+    tags: ["Node.js", "TypeScript", "React", "Express.js", "SQLite", "GitHub API"],
+    features: [
+      "Chokidar-powered file watcher with debounced real-time pattern detection across 10+ code patterns",
+      "Daemon anti-pattern detector with GitHub API learning, confidence scoring, and closed-issue correlation",
+      "Express.js REST API + SQLite persistence + React dashboard with terminal emulation",
     ]
   }
 ];
 
 export const DEBUG_LOGS: DebugLog[] = [
   {
-    title: "PDF Parser Import Bug & Test Conflict",
+    title: "PDF Parser Import Bug",
     repository: "STUDY-AI",
     commit: "7b31d6c",
     difficulty: 5,
-    symptom: "pdf-parse library had a critical bug importing test files, causing crashes when parsing PDFs.",
+    symptom: "pdf-parse had a critical bug importing test files, causing crashes when parsing PDFs in production.",
     investigation: "Library was pulling in unnecessary test dependencies that conflicted with the production build environment.",
-    resolution: "Replaced pdf-parse with pdf2json, rewrote extraction logic using event-driven Promises, and added validation for empty extraction across PDF, Word, and Text files.",
+    resolution: "Replaced pdf-parse with pdf2json, rewrote extraction using event-driven Promises, added empty-extraction validation.",
     tags: ["PDF Extraction", "Dependency Management", "Promises"]
   },
   {
-    title: "Multi-Stage Docker Build Configuration",
+    title: "Multi-Stage Docker Build Config",
     repository: "STUDY-AI",
     commit: "1504e2c",
     difficulty: 5,
     symptom: "Docker builds failing due to root vs backend/ path mismatches and .dockerignore blocking the Dockerfile itself.",
     investigation: "Identified that the .dockerignore was too aggressive and paths in the Dockerfile didn't align with the build context.",
-    resolution: "Restructured Dockerfile in backend/ directory, fixed relative paths, and created a precise .dockerignore excluding only artifacts like node_modules and dist.",
+    resolution: "Restructured Dockerfile in backend/ directory, fixed relative paths, created precise .dockerignore.",
     tags: ["Docker", "DevOps", "CI/CD"]
   },
   {
-    title: "Quiz Reset State Management Bug",
+    title: "Quiz Reset State Management",
     repository: "STUDYBOY-V1",
     commit: "16ce67c",
     difficulty: 5,
-    symptom: "Quiz not resetting properly when starting new sessions, causing state conflicts and leaking data between rounds.",
+    symptom: "Quiz not resetting properly when starting new sessions — state conflicts and data leaking between rounds.",
     investigation: "State was not being cleared on unmount, and the architecture didn't separate individual session logic from the global dashboard.",
-    resolution: "Refactored Past Sessions architecture, extracted SessionList as a component, and added proper cleanup logic on component unmount.",
-    tags: ["React State", "Architecture", "Clean Code"]
+    resolution: "Refactored architecture, extracted SessionList as a component, added proper cleanup on unmount.",
+    tags: ["React State", "Architecture"]
   },
   {
     title: "TypeScript Undefined Constants",
@@ -92,28 +132,28 @@ export const DEBUG_LOGS: DebugLog[] = [
     difficulty: 4,
     symptom: "Build failing due to SYSTEM_INSTRUCTION constant being undefined across multiple files.",
     investigation: "Inconsistent naming conventions led to broken imports after a partial refactor.",
-    resolution: "Standardized all instances to DEFAULT_SYSTEM_INSTRUCTION and fixed import paths across the entire codebase.",
-    tags: ["TypeScript", "Refactoring", "Standards"]
-  },
-  {
-    title: "Duplicate Code in Parse Function",
-    repository: "STUDYBOY-V1",
-    commit: "b119b76",
-    difficulty: 4,
-    symptom: "TypeScript error caused by duplicate code logic in parseSummary function.",
-    investigation: "Legacy code was left behind during an update, causing type inference issues and bloated bundle size.",
-    resolution: "Identified and removed duplicate parsing logic, consolidating into a single, efficient, typed implementation.",
-    tags: ["Performance", "DRY", "TypeScript"]
+    resolution: "Standardized to DEFAULT_SYSTEM_INSTRUCTION and fixed all import paths across the entire codebase.",
+    tags: ["TypeScript", "Refactoring"]
   },
   {
     title: "Graceful Error Handling & Fallback",
     repository: "STUDYBOY-V1",
     commit: "6a2141b",
     difficulty: 4,
-    symptom: "App crashing when API calls failed, with no fallback mechanism to show the user.",
+    symptom: "App crashing when API calls failed with no user-facing fallback mechanism.",
     investigation: "API error responses weren't being caught at the service level, leading to runtime exceptions.",
-    resolution: "Implemented comprehensive fallback data structures and try-catch blocks with graceful UI degradation to prevent hard crashes.",
+    resolution: "Implemented comprehensive fallback data structures and try-catch with graceful UI degradation.",
     tags: ["Resilience", "UX", "Error Handling"]
+  },
+  {
+    title: "DOCX Dependency Conflict",
+    repository: "STUDYBOY-V1",
+    commit: "0091dce",
+    difficulty: 4,
+    symptom: "DOCX support causing native dependency conflicts that broke the production build on Render.",
+    investigation: "The DOCX library had native dependencies that failed in serverless environments.",
+    resolution: "Removed problematic DOCX deps, implemented Markdown (.md) support as a stable alternative.",
+    tags: ["Dependencies", "Deployment"]
   },
   {
     title: "Flashcard Load More Pagination",
@@ -122,18 +162,18 @@ export const DEBUG_LOGS: DebugLog[] = [
     difficulty: 4,
     symptom: "Load More button not working correctly, flashcards not paginating properly beyond the first page.",
     investigation: "Offset calculation was incorrect and the state wasn't appending new cards correctly.",
-    resolution: "Fixed pagination logic, increased base count to 15, and corrected offset calculation for the 'Load More' functionality.",
+    resolution: "Fixed pagination logic, increased base count to 15, and corrected offset calculation.",
     tags: ["Pagination", "Logic", "UI/UX"]
   },
   {
-    title: "DOCX Dependency Conflict",
+    title: "Duplicate Code in Parse Function",
     repository: "STUDYBOY-V1",
-    commit: "0091dce",
+    commit: "b119b76",
     difficulty: 4,
-    symptom: "DOCX file support causing dependency conflicts breaking the production build.",
-    investigation: "The DOCX library had native dependencies that failed in serverless environments.",
-    resolution: "Removed problematic DOCX dependencies and implemented Markdown (.md) support as a stable alternative for document input.",
-    tags: ["Dependencies", "Deployment", "Alternatives"]
+    symptom: "TypeScript error caused by duplicate code logic in parseSummary function.",
+    investigation: "Legacy code was left behind during an update, causing type inference issues.",
+    resolution: "Identified and removed duplicate parsing logic, consolidating into a single typed implementation.",
+    tags: ["Performance", "DRY", "TypeScript"]
   },
   {
     title: "Dockerfile Path Configuration",
@@ -152,7 +192,7 @@ export const DEBUG_LOGS: DebugLog[] = [
     difficulty: 3,
     symptom: "No quick-recall system for commonly used shell commands and aliases, slowing down development.",
     investigation: "Manual lookup of complex git and docker commands was wasting time daily.",
-    resolution: "Created a comprehensive aliases library organized by use case (Git, Docker, Linux) with examples for quick recall.",
+    resolution: "Created a comprehensive aliases library organized by use case (Git, Docker, Linux) with examples.",
     tags: ["Productivity", "Scripting", "Workflow"]
   }
 ];
@@ -160,11 +200,11 @@ export const DEBUG_LOGS: DebugLog[] = [
 export const SKILLS: SkillGroup[] = [
   { category: "Languages", items: ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "Bash"] },
   { category: "Frontend", items: ["React 19", "Next.js", "Vite", "Tailwind CSS", "shadcn/ui", "Radix UI"] },
-  { category: "Backend", items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "GraphQL", "WebSockets", "Async Job Processing"] },
-  { category: "AI / ML", items: ["Gemini Flash/Pro", "OpenAI GPT-4", "RAG", "Semantic Search & Embeddings", "Predictive Modeling", "Poisson/Dixon-Coles", "Monte Carlo Simulation"] },
-  { category: "Infra & DevOps", items: ["Docker", "Docker Compose", "NGINX", "AWS (EC2/S3/RDS)", "Render", "GitHub Actions", "CI/CD", "Self-hosted Linux servers"] },
-  { category: "Databases", items: ["PostgreSQL", "Supabase", "MongoDB", "SQLite", "Redis", "Prisma", "SQLAlchemy"] },
-  { category: "Blockchain / Web3", items: ["Ethereum", "Solana", "Solidity Smart Contracts", "Web3.js", "ethers.js", "Multi-chain Development"] },
+  { category: "Backend", items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "GraphQL", "WebSockets"] },
+  { category: "AI / ML", items: ["Gemini Flash/Pro", "OpenAI GPT-4", "RAG", "Predictive Modeling", "Poisson/Dixon-Coles", "Monte Carlo"] },
+  { category: "Infra & DevOps", items: ["Docker", "NGINX", "AWS EC2/S3/RDS", "GitHub Actions", "CI/CD", "Self-hosted Linux"] },
+  { category: "Databases", items: ["PostgreSQL", "Supabase", "MongoDB", "SQLite", "Redis", "Prisma"] },
+  { category: "Blockchain", items: ["Ethereum", "Solana", "Solidity", "Web3.js", "ethers.js"] },
 ];
 
 export const EXPERIENCE: Experience[] = [
@@ -184,13 +224,21 @@ export const EXPERIENCE: Experience[] = [
 export const EDUCATION: Education[] = [
   {
     institution: "Ivy Tech Community College",
-    period: "2024 - Present",
+    period: "2024 – Present",
     degree: "A.A.S., Electrical Engineering",
     location: "Indianapolis, IN"
   }
 ];
 
 export const CERTIFICATIONS: Certification[] = [
-  { name: "Meta Front-End Developer Professional Certificate", id: "OTUKNS34F9DV" },
-  { name: "Meta Back-End Developer Professional Certificate", id: "JLXU4IAKHBP3" },
+  {
+    name: "Meta Front-End Developer Professional Certificate",
+    id: "OTUKNS34F9DV",
+    image: "/uploads/WhatsApp Image 2026-04-24 at 2.49.22 PM.jpeg"
+  },
+  {
+    name: "Meta Back-End Developer Professional Certificate",
+    id: "JLXU4IAKHBP3",
+    image: "/uploads/WhatsApp Image 2026-04-24 at 2.49.22 PM (1).jpeg"
+  },
 ];

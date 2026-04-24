@@ -3,64 +3,51 @@ import React, { useState } from 'react';
 import { SKILLS } from '../constants';
 
 const Skills: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  const visible = SKILLS.filter(s => activeCategory === null || s.category === activeCategory);
+  const [active, setActive] = useState<string | null>(null);
+  const visible = active ? SKILLS.filter(s => s.category === active) : SKILLS;
 
   return (
-    <section className="py-10 reveal">
-      {/* Header */}
-      <div className="flex items-center gap-6 mb-8 border-l-8 border-green-500 pl-5">
-        <div>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900">SKILLS</h2>
-          <div className="text-[10px] text-gray-400 uppercase tracking-[0.4em] mt-1">Technical Arsenal</div>
-        </div>
-      </div>
-
-      {/* Category filter tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        <button
-          onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all ${
-            activeCategory === null
-              ? 'bg-green-500 text-white border-green-500'
-              : 'text-gray-500 border-gray-300 hover:border-green-400 hover:text-green-600'
-          }`}
-        >
-          All
-        </button>
-        {SKILLS.map(s => (
-          <button
-            key={s.category}
-            onClick={() => setActiveCategory(prev => prev === s.category ? null : s.category)}
-            className={`px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all ${
-              activeCategory === s.category
-                ? 'bg-green-500 text-white border-green-500'
-                : 'text-gray-500 border-gray-300 hover:border-green-400 hover:text-green-600'
-            }`}
-          >
-            {s.category}
-          </button>
-        ))}
-      </div>
-
-      {/* Skills grid — grouped by category */}
-      <div className="space-y-6">
-        {visible.map((group, gi) => (
-          <div key={gi} className="group">
-            <div className="text-[10px] font-black text-green-600 uppercase tracking-[0.4em] mb-3">{group.category}</div>
-            <div className="flex flex-wrap gap-2">
-              {group.items.map((skill, si) => (
-                <div
-                  key={si}
-                  className="px-3 py-2 border border-gray-200 bg-white text-sm text-gray-700 font-medium hover:border-green-400 hover:bg-green-50 hover:text-green-700 hover:-translate-y-0.5 hover:shadow-sm transition-all cursor-default"
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
+    <section id="skills" style={{ padding: '120px 48px', borderBottom: '1px solid #e8e8e8' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 48 }}>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 }}>Technical Arsenal</div>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(44px,5vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Skills</h2>
           </div>
-        ))}
+        </div>
+
+        <div className="reveal" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 48 }}>
+          <button onClick={() => setActive(null)} className={`pill${active === null ? ' active' : ''}`}>All</button>
+          {SKILLS.map(s => (
+            <button key={s.category} onClick={() => setActive(p => p === s.category ? null : s.category)} className={`pill${active === s.category ? ' active' : ''}`}>{s.category}</button>
+          ))}
+        </div>
+
+        <div className="reveal">
+          {visible.map((group, gi) => (
+            <div key={gi} style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 0, padding: '28px 0', borderBottom: '1px solid #f0f0f0' }}>
+              <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#16a34a', paddingTop: 4 }}>{group.category}</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {group.items.map((skill, si) => (
+                  <span
+                    key={si}
+                    style={{ fontSize: 12, padding: '7px 16px', border: '1px solid #e8e8e8', color: '#333', background: '#fafafa', transition: 'all 0.15s', cursor: 'default' }}
+                    onMouseEnter={e => {
+                      const t = e.target as HTMLSpanElement;
+                      t.style.borderColor = '#16a34a'; t.style.color = '#16a34a'; t.style.background = '#f0fdf4';
+                    }}
+                    onMouseLeave={e => {
+                      const t = e.target as HTMLSpanElement;
+                      t.style.borderColor = '#e8e8e8'; t.style.color = '#333'; t.style.background = '#fafafa';
+                    }}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

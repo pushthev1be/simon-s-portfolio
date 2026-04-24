@@ -1,8 +1,12 @@
 
 export interface Project {
+  id: string;
   title: string;
+  label: string;
   description: string;
   link?: string;
+  image?: string;
+  featured?: boolean;
   tags: string[];
   features: string[];
 }
@@ -41,9 +45,8 @@ export interface Education {
 export interface Certification {
   name: string;
   id: string;
+  image?: string;
 }
-
-export type ViewMode = 'gui' | 'terminal' | 'resume';
 
 export interface Message {
   role: 'user' | 'assistant';

@@ -1,101 +1,79 @@
 
-import React from 'react';
-import { PERSONAL_INFO } from '../constants';
+import React, { useState, useEffect, useRef } from 'react';
+import { PERSONAL_INFO, STATS } from '../constants';
 
-const STATS = [
-  { value: '18', label: 'Microservices' },
-  { value: '13', label: 'API Integrations' },
-  { value: '3', label: 'Countries' },
-  { value: '2+', label: 'Years Shipped' },
-];
+function useCounter(target: number, duration = 1400): [number, React.RefObject<HTMLDivElement>] {
+  const [val, setVal] = useState(0);
+  const ref = useRef<HTMLDivElement>(null!);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || started.current) return;
+      started.current = true;
+      let start = 0;
+      const step = target / (duration / 16);
+      const tick = () => {
+        start += step;
+        if (start >= target) { setVal(target); return; }
+        setVal(Math.floor(start));
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.5 });
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, [target, duration]);
+
+  return [val, ref];
+}
+
+const StatCounter: React.FC<{ value: number; suffix: string; label: string }> = ({ value, suffix, label }) => {
+  const [count, ref] = useCounter(value);
+  return (
+    <div ref={ref} style={{ textAlign: 'center' }}>
+      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 52, fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1 }}>
+        {count}{suffix}
+      </div>
+      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#999', marginTop: 10 }}>{label}</div>
+    </div>
+  );
+};
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center text-center max-w-5xl mx-auto py-16 px-4 reveal">
-
-      {/* Subtle animated classified stamp */}
-      <div className="absolute top-8 right-0 pointer-events-none -z-10 select-none hidden md:block">
-        <div className="classified-stamp-animated text-2xl">CLASSIFIED // NOFORN</div>
-      </div>
-
-      {/* Profile photo */}
-      <div className="relative mb-10 h-36 w-36 group">
-        <div className="hud-corner hud-tl border-green-400 !w-5 !h-5"></div>
-        <div className="hud-corner hud-tr border-green-400 !w-5 !h-5"></div>
-        <div className="hud-corner hud-bl border-green-400 !w-5 !h-5"></div>
-        <div className="hud-corner hud-br border-green-400 !w-5 !h-5"></div>
-        <div className="absolute inset-0 border-2 border-gray-200 bg-gray-50 overflow-hidden">
-          <img
-            src="profile.jpeg"
-            alt="Simon Olawuyi"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=S+O&background=16a34a&color=fff&size=512`;
-            }}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-green-500 text-white text-[8px] font-black py-0.5 uppercase tracking-widest text-center">
-            Verified
+    <section id="top" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '128px 48px 80px', borderBottom: '1px solid #e8e8e8' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+        <div className="reveal" style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 40 }}>
+          Full-Stack Engineer — Indianapolis, IN
+        </div>
+        <div style={{ marginBottom: 56 }}>
+          <div className="reveal" style={{ overflow: 'hidden' }}>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(68px, 11vw, 156px)', fontWeight: 800, lineHeight: 0.9, letterSpacing: '-0.045em', color: '#0a0a0a' }}>SIMON</h1>
+          </div>
+          <div className="reveal reveal-delay-1" style={{ overflow: 'hidden' }}>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(68px, 11vw, 156px)', fontWeight: 800, lineHeight: 0.9, letterSpacing: '-0.045em', background: 'linear-gradient(90deg,#15803d 0%,#22c55e 50%,#15803d 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'shimmer 5s linear infinite' }}>OLAWUYI</h1>
+          </div>
+          <div className="reveal reveal-delay-2" style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 20 }}>
+            <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#bbb' }}>A.K.A.</span>
+            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#0a0a0a' }}>PUSH</span>
+            <span style={{ fontSize: 11, color: '#aaa', letterSpacing: '0.04em', fontStyle: 'italic', maxWidth: 280, lineHeight: 1.4 }}>— you can't push something backward, only forward.</span>
           </div>
         </div>
-      </div>
-
-      {/* Name & title */}
-      <div className="space-y-3 mb-6">
-        <div className="text-green-600 text-[10px] font-black tracking-[0.5em] uppercase">
-          [ Full-Stack Engineer // Indianapolis, IN ]
-        </div>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
-          <span className="block text-slate-900" style={{ animation: 'fadeIn 0.5s ease-out 0.2s both' }}>
-            SIMON
-          </span>
-          <span className="block shimmer-text" style={{ animation: 'fadeIn 0.5s ease-out 0.4s both, shimmer 4s linear 0.4s infinite' }}>
-            OLAWUYI
-          </span>
-        </h1>
-      </div>
-
-      {/* Summary */}
-      <p className="text-gray-500 text-base md:text-lg max-w-2xl leading-relaxed mb-10 font-medium"
-        style={{ animation: 'fadeIn 0.5s ease-out 0.6s both' }}>
-        Self-taught. Solo-shipping. Building production-grade AI systems and real products used by real people — from architecture to deployment.
-      </p>
-
-      {/* Stats row */}
-      <div className="grid grid-cols-4 gap-4 w-full max-w-lg mb-10"
-        style={{ animation: 'fadeIn 0.5s ease-out 0.7s both' }}>
-        {STATS.map((stat, i) => (
-          <div key={i} className="border border-gray-200 bg-gray-50 py-3 px-2 text-center hover:border-green-400 hover:bg-green-50 transition-all group cursor-default">
-            <div className="text-2xl font-black text-slate-900 group-hover:text-green-600 transition-colors">{stat.value}</div>
-            <div className="text-[9px] uppercase tracking-widest text-gray-400 font-bold mt-0.5">{stat.label}</div>
+        <div className="reveal reveal-delay-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'end' }}>
+          <p style={{ fontSize: 15, lineHeight: 1.8, color: '#555', maxWidth: 460 }}>
+            Self-taught. Solo-shipping. Building production-grade AI systems used by real people — from architecture to deployment.
+          </p>
+          <div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24, paddingBottom: 32, marginBottom: 32, borderBottom: '1px solid #e8e8e8' }}>
+              {STATS.map((s, i) => <StatCounter key={i} {...s} />)}
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <a href="#projects" className="cta-primary">View Work</a>
+              <a href={PERSONAL_INFO.website} target="_blank" rel="noopener noreferrer" className="cta-outline">Oracle AI ↗</a>
+            </div>
           </div>
-        ))}
-      </div>
-
-      {/* CTAs */}
-      <div className="flex flex-wrap items-center justify-center gap-4"
-        style={{ animation: 'fadeIn 0.5s ease-out 0.8s both' }}>
-        <a
-          href="#projects"
-          className="px-8 py-3 bg-green-500 text-white font-black hover:bg-green-600 transition-all hover:scale-105 active:scale-95 shadow-md shadow-green-100"
-        >
-          VIEW PROJECTS
-        </a>
-        <a
-          href={PERSONAL_INFO.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-8 py-3 border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all"
-        >
-          GITHUB
-        </a>
-        <a
-          href={PERSONAL_INFO.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-8 py-3 border-2 border-green-500 text-green-600 font-black hover:bg-green-500 hover:text-white transition-all"
-        >
-          ORACLE AI ↗
-        </a>
+        </div>
       </div>
     </section>
   );
