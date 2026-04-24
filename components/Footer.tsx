@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const Footer: React.FC = () => {
+  const isMobile = useIsMobile();
   const contacts = [
     { icon: 'fa-envelope', prefix: 'fas', label: PERSONAL_INFO.email, href: `mailto:${PERSONAL_INFO.email}` },
     { icon: 'fa-linkedin', prefix: 'fab', label: 'LinkedIn', href: PERSONAL_INFO.linkedin },
@@ -10,12 +12,12 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer id="contact" style={{ background: '#0a0a0a', color: '#fff', padding: '120px 48px 60px' }}>
+    <footer id="contact" style={{ background: '#0a0a0a', color: '#fff', padding: isMobile ? '80px 20px 40px' : '120px 48px 60px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'end', marginBottom: 80 }}>
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 48 : 80, alignItems: 'end', marginBottom: isMobile ? 48 : 80 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 24 }}>Get In Touch</div>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 80, fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 0.9, marginBottom: 48 }}>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 56 : 80, fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 0.9, marginBottom: 40 }}>
               Let's<br />Build.
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -35,11 +37,11 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ paddingLeft: 60, borderLeft: '1px solid #1a1a1a' }}>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 52, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 6, background: 'linear-gradient(90deg,#15803d,#22c55e)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <div style={{ paddingLeft: isMobile ? 0 : 60, borderLeft: isMobile ? 'none' : '1px solid #1a1a1a', borderTop: isMobile ? '1px solid #1a1a1a' : 'none', paddingTop: isMobile ? 40 : 0 }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 40 : 52, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 6, background: 'linear-gradient(90deg,#15803d,#22c55e)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Simon<br />Olawuyi
             </div>
-            <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 40 }}>Full-Stack Engineer</div>
+            <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 32 }}>Full-Stack Engineer</div>
             <div style={{ fontSize: 12, color: '#333', lineHeight: 2 }}>
               Indianapolis, IN<br />Open to remote opportunities<br />
               <a
@@ -56,9 +58,9 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div style={{ paddingTop: 32, borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ paddingTop: 32, borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', textTransform: 'uppercase' }}>© 2026 Simon Olawuyi</div>
-          <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>Self-taught. Solo-shipping. Production-grade.</div>
+          {!isMobile && <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>Self-taught. Solo-shipping. Production-grade.</div>}
         </div>
       </div>
     </footer>

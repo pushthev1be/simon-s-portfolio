@@ -1,24 +1,26 @@
 
 import React, { useState } from 'react';
 import { DEBUG_LOGS } from '../constants';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const DIFFICULTY_LABELS = ['', 'Trivial', 'Easy', 'Moderate', 'Hard', 'Critical'];
 
 const DebugLogs: React.FC = () => {
   const [open, setOpen] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   return (
-    <section id="logs" style={{ padding: '120px 48px', borderBottom: '1px solid #e8e8e8' }}>
+    <section id="logs" style={{ padding: isMobile ? '80px 20px' : '120px 48px', borderBottom: '1px solid #e8e8e8' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 56 }}>
+        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 40 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 }}>Real Bugs. Real Commits.</div>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(44px,5vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Debug Logs</h2>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(36px,5vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Debug Logs</h2>
           </div>
           <span className="section-num">10 Entries</span>
         </div>
 
-        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 1 }}>
           {DEBUG_LOGS.map((log, i) => {
             const isOpen = open === i;
             return (
@@ -26,7 +28,7 @@ const DebugLogs: React.FC = () => {
                 key={i}
                 onClick={() => setOpen(isOpen ? null : i)}
                 style={{
-                  cursor: 'pointer', padding: '28px 32px',
+                  cursor: 'pointer', padding: isMobile ? '20px 16px' : '28px 32px',
                   border: '1px solid #e8e8e8',
                   borderLeft: isOpen ? '3px solid #16a34a' : '1px solid #e8e8e8',
                   background: isOpen ? '#fafffe' : '#fff',

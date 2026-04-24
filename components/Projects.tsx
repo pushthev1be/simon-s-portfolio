@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const PALETTES: Record<string, { bg: string; line: string; dot: string; text: string }> = {
   '001': { bg: '#0a1a0f', line: '#16a34a', dot: '#22c55e', text: '#16a34a' },
@@ -57,16 +58,17 @@ const ProjectMockup: React.FC<{ project: Project }> = ({ project }) => {
 
 const Projects: React.FC = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const isMobile = useIsMobile();
   const featured = PROJECTS[0];
   const others = PROJECTS.slice(1);
 
   return (
-    <section id="projects" style={{ padding: '120px 48px', borderBottom: '1px solid #e8e8e8' }}>
+    <section id="projects" style={{ padding: isMobile ? '80px 20px' : '120px 48px', borderBottom: '1px solid #e8e8e8' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 56 }}>
+        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 40 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 }}>Production Deployments</div>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(44px,5vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Projects</h2>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(36px,5vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Projects</h2>
           </div>
           <span className="section-num">04 Works</span>
         </div>
@@ -79,12 +81,12 @@ const Projects: React.FC = () => {
           onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.borderColor = '#e8e8e8'}
         >
           <ProjectMockup project={featured} />
-          <div style={{ padding: '40px 48px', display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 56 }}>
+          <div style={{ padding: isMobile ? '28px 20px' : '40px 48px', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.5fr 1fr', gap: isMobile ? 32 : 56 }}>
             <div>
               <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 10 }}>{featured.label}</div>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 36, fontWeight: 800, letterSpacing: '-0.03em', marginBottom: 14 }}>{featured.title}</h3>
-              <p style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginBottom: 24 }}>{featured.description}</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 28 }}>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 26 : 36, fontWeight: 800, letterSpacing: '-0.03em', marginBottom: 14 }}>{featured.title}</h3>
+              <p style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginBottom: 20 }}>{featured.description}</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
                 {featured.tags.map(t => <span key={t} className="pill">{t}</span>)}
               </div>
               {(expanded === 0 ? featured.features : featured.features.slice(0, 3)).map((f, i) => (
@@ -101,7 +103,7 @@ const Projects: React.FC = () => {
                 {expanded === 0 ? '↑ Show less' : `↓ +${featured.features.length - 3} more details`}
               </button>
             </div>
-            <div style={{ paddingLeft: 40, borderLeft: '1px solid #e8e8e8', display: 'flex', flexDirection: 'column', gap: 28 }}>
+            <div style={{ paddingLeft: isMobile ? 0 : 40, borderLeft: isMobile ? 'none' : '1px solid #e8e8e8', borderTop: isMobile ? '1px solid #e8e8e8' : 'none', paddingTop: isMobile ? 24 : 0, display: 'flex', flexDirection: 'column', gap: 24 }}>
               <div>
                 <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#999', marginBottom: 10 }}>Status</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -128,7 +130,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Other projects */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr', gap: 1 }}>
           {others.map((p, idx) => {
             const isOpen = expanded === idx + 1;
             return (
@@ -140,12 +142,12 @@ const Projects: React.FC = () => {
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.borderColor = '#e8e8e8'}
               >
                 <ProjectMockup project={p} />
-                <div style={{ padding: '28px 32px' }}>
+                <div style={{ padding: isMobile ? '20px 20px' : '28px 32px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
                     <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#999' }}>{p.label}</div>
                     <div style={{ fontSize: 9, fontWeight: 700, color: '#ddd', letterSpacing: '0.1em' }}>{p.id}</div>
                   </div>
-                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 10 }}>{p.title}</h3>
+                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 22 : 26, fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 10 }}>{p.title}</h3>
                   <p style={{ fontSize: 12, color: '#555', lineHeight: 1.65, marginBottom: 16 }}>{p.description}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 16 }}>
                     {p.tags.map(t => <span key={t} className="pill">{t}</span>)}
