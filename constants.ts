@@ -1,5 +1,5 @@
 
-import { Project, Experience, SkillGroup, DebugLog, Education, Certification } from './types';
+import { Project, Experience, SkillGroup, DebugLog, Education, Certification, Thought } from './types';
 
 export const PERSONAL_INFO = {
   name: "Simon Abayomi Olawuyi",
@@ -11,6 +11,10 @@ export const PERSONAL_INFO = {
   linkedin: "https://www.linkedin.com/in/simon-olawuyi-01986a316/",
   github: "https://github.com/pushthev1be",
   website: "https://www.oracleai.live",
+  siteUrl: "https://www.simonolawuyi.com",
+  itch: "https://pushthev1be.itch.io/",
+  twitter: "https://x.com/pushthevibe",
+  calendly: "https://calendly.com/nomispeter12/30min",
 };
 
 export const STATS = [
@@ -35,7 +39,9 @@ export const PROJECTS: Project[] = [
     description: "Production live sports prediction platform with a self-correcting mathematical engine and international user base (US, Nigeria, Ghana). Solo-built, Stripe-monetized, fully deployed.",
     link: "https://www.oracleai.live",
     featured: true,
-    image: "/uploads/Screenshot 2026-04-14 010129.png",
+    category: "Product",
+    linkLabel: "Visit live site",
+    image: "/uploads/oracledashboard.png",
     tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Gemini AI", "Docker"],
     features: [
       "Poisson + Dixon-Coles modeling with xG regression across Premier League, Champions League, NBA, and ATP Tour",
@@ -53,6 +59,7 @@ export const PROJECTS: Project[] = [
     description: "AI-powered Socratic study companion that guides students through topics using follow-up questions instead of giving answers — building real understanding, not just recall.",
     link: undefined,
     featured: false,
+    category: "Product",
     image: "/uploads/Screenshot 2026-04-19 211742.png",
     tags: ["React", "Gemini API", "TypeScript", "Tailwind CSS"],
     features: [
@@ -69,6 +76,7 @@ export const PROJECTS: Project[] = [
     description: "Transform study notes and documents into interactive summaries, flashcards, and board-style quizzes. Built with spaced-repetition retention tracking and multi-format analytics.",
     link: "https://studyboy-v1.onrender.com",
     featured: false,
+    category: "Product",
     image: undefined,
     tags: ["React", "Gemini API", "Vite", "Tailwind CSS", "TypeScript"],
     features: [
@@ -84,15 +92,103 @@ export const PROJECTS: Project[] = [
     description: "Daemon-based code intelligence tool that detects anti-patterns in real time, learns from your GitHub history, and surfaces solutions through a React dashboard with terminal emulation.",
     link: undefined,
     featured: false,
-    image: undefined,
+    category: "Product",
+    image: "/uploads/devbrain.png",
     tags: ["Node.js", "TypeScript", "React", "Express.js", "SQLite", "GitHub API"],
     features: [
       "Chokidar-powered file watcher with debounced real-time pattern detection across 10+ code patterns",
       "Daemon anti-pattern detector with GitHub API learning, confidence scoring, and closed-issue correlation",
       "Express.js REST API + SQLite persistence + React dashboard with terminal emulation",
     ]
+  },
+  {
+    id: '005',
+    title: "TuneCity Garage Sim",
+    label: "Browser Game",
+    description: "A pixel-art browser game where you build, tune, and diagnose cars. Playable instantly, no install.",
+    link: "https://pushthev1be.itch.io/httpstunecityonrendercom",
+    linkLabel: "Play in browser",
+    badge: "Playable",
+    category: "Game",
+    featured: false,
+    image: "/uploads/itch-tunecity.png",
+    tags: ["Pixel Art", "Simulation", "Browser Game"],
+    features: []
+  },
+  {
+    id: '006',
+    title: "Naija 5s",
+    label: "Browser Game",
+    description: "Retro Naija-themed five-a-side football game. Playable demo in the browser.",
+    link: "https://pushthev1be.itch.io/httpsnaija-5sonrendercom",
+    linkLabel: "Play in browser",
+    badge: "Playable",
+    category: "Game",
+    featured: false,
+    image: "/uploads/itch-naija5s.png",
+    tags: ["Sports", "Retro", "Browser Game"],
+    features: []
+  },
+  {
+    id: '007',
+    title: "All-in-1 Asset Pack",
+    label: "Game Assets",
+    description: "Car parts, engines, turbos, guns, monsters and garage sprites in one bundle for pixel-art games.",
+    link: "https://pushthev1be.itch.io/all-in-1-monster-bergunpackcarpackengine-pack",
+    linkLabel: "View on itch.io",
+    category: "Assets",
+    featured: false,
+    image: "/uploads/itch-allinone.png",
+    tags: ["Sprites", "Pixel Art", "Asset Pack"],
+    features: []
+  },
+  {
+    id: '008',
+    title: "Gun Sprites",
+    label: "Game Assets",
+    description: "Pixel-art gun sprites with multi-direction animation frames, ready to drop into a game.",
+    link: "https://pushthev1be.itch.io/gun-sprites",
+    linkLabel: "View on itch.io",
+    category: "Assets",
+    featured: false,
+    image: "/uploads/itch-guns.png",
+    tags: ["Sprites", "Pixel Art"],
+    features: []
+  },
+  {
+    id: '009',
+    title: "Car Parts Sprites",
+    label: "Game Assets",
+    description: "Engines and car parts sprites built for TuneCity, each in 8 directions.",
+    link: "https://pushthev1be.itch.io/car-parts-sprites",
+    linkLabel: "View on itch.io",
+    category: "Assets",
+    featured: false,
+    image: "/uploads/itch-carparts.png",
+    tags: ["Sprites", "Pixel Art"],
+    features: []
   }
 ];
+
+export const SERVICES = [
+  {
+    title: "AI-powered products",
+    desc: "LLM features, prediction engines and data pipelines, taken from idea to a live, monetized product.",
+    proof: "Oracle Odds AI",
+  },
+  {
+    title: "Full-stack web apps",
+    desc: "React, Next.js and Node apps with auth, payments, a real database and a deployment you can maintain.",
+    proof: "StudyGenius AI, CrossCheck",
+  },
+  {
+    title: "Games & prototypes",
+    desc: "Playable browser games and pixel-art asset packs, from a quick prototype to something people can buy.",
+    proof: "TuneCity, Naija 5s",
+  },
+];
+
+export const STACK = ["TypeScript", "React", "Next.js", "Node.js", "Python", "PostgreSQL", "Supabase", "Stripe", "Docker", "AWS", "Gemini / OpenAI", "Tailwind CSS"];
 
 export const DEBUG_LOGS: DebugLog[] = [
   {
@@ -240,5 +336,78 @@ export const CERTIFICATIONS: Certification[] = [
     name: "Meta Back-End Developer Professional Certificate",
     id: "JLXU4IAKHBP3",
     image: "/uploads/WhatsApp Image 2026-04-24 at 2.49.22 PM (1).jpeg"
+  },
+];
+
+/**
+ * To add a post: drop the PDF in public/thoughts/ and add an entry at the top of this list.
+ * `sections` is optional: include it to make the post readable on the page.
+ */
+export const THOUGHTS: Thought[] = [
+  {
+    slug: "deep-thoughts-on-ai",
+    pdf: "/thoughts/deep-thoughts-on-ai.pdf",
+    title: "Deep Thoughts on AI",
+    date: "2026-09-20",
+    author: "Simon Abayomi Olawuyi",
+    summary: "Three thoughts on AI: whether it can be sentient, the stigma already forming around it, and how AI and robotics fit together.",
+    intro: ["I often have deep thoughts on AI, so I\u2019ll be talking about a few today."],
+    sections: [
+      {
+        heading: "1. AI can\u2019t truly be sentient\u2026 or can it?",
+        paragraphs: [
+          "From my experience, AI seems to have what I call \u201chuman flaws.\u201d Its ideas of right and wrong, acceptable and unacceptable, are shaped by humans through training data, feedback, objectives, and safeguards. Even its creativity comes from patterns learned from human-created material.",
+          "But here\u2019s the interesting part: humans also learn from the world around them. So maybe the real question isn't whether AI learns from humans, but whether it can develop subjective experience, personal desires, and its own reasons for creating. We still don't have scientific evidence that current AI is conscious.",
+        ],
+      },
+      {
+        heading: "2. AI is already developing a stigma.",
+        paragraphs: [
+          "In Nigeria, when a product doesn\u2019t last, people might say, *\u201cIt\u2019s probably China-made.\u201d* Not because China can\u2019t produce quality. China produces some incredible technology. But the label became associated with mass production.",
+          "I think AI is developing a similar stigma. *\u201cIt\u2019s AI, so it must be generic or fake.\u201d* Ironically, AI can become so polished that its perfection itself starts making people suspicious.",
+        ],
+      },
+      {
+        heading: "3. AI + Robotics",
+        paragraphs: [
+          "I see robotics as the body and AI as the mind.",
+          "AI can reason, plan and decide. Robotics gives those decisions a physical presence. As AI becomes more agentic and robotics becomes more capable, we could eventually have systems that perceive, decide, act and adapt autonomously.",
+          "And that opens some crazy possibilities\u2026",
+          "Agentic AI \u2192 Agentic physical intelligence \u2192 live-action Terminator 5 LOL.",
+        ],
+        footnote: '# "AI" appears 12 times in the post',
+      },
+    ],
+  },
+  {
+    slug: "big-2-chatgpt-vs-claude",
+    pdf: "/thoughts/big-2-chatgpt-vs-claude.pdf",
+    summary: "My honest experience using ChatGPT and Claude so far: what I like about each, and where they fall short.",
+    title: "So far my experience using \u201cThe big 2\u201d",
+    date: "2026-08-04",
+    author: "Simon Abayomi Olawuyi",
+    cover: "/uploads/AI Thoughts.png",
+    sections: [
+      {
+        heading: "ChatGPT by OpenAI",
+        paragraphs: [
+          "ChatGPT is like that family member or, more closely, a mother who's always there when you need some positive love. Although ChatGPT catches a lot of heat for babying users or always seeming to side with your point, it often gives reliable answers comparable to the oh-so-great Fable 5. Fable 5 just goes more in depth, whereas ChatGPT stays on the surface, as if it's trying not to overwhelm the user.",
+          "In my opinion, ChatGPT is underrated. I remember a time when ChatGPT was all we had. ChatGPT felt magical. Now everyone wants to diss ChatGPT. I haven't personally had the chance to use Codex, so I won't speak on it.",
+        ],
+        footnote: '# Number of times "ChatGPT" was said: 8',
+      },
+      {
+        heading: "Claude by Anthropic",
+        paragraphs: [
+          "I personally love Claude. A lot.",
+          'Claude gave me that feeling of taking a T-break and then coming back the high felt entirely new. The UI, the little "spooling," "cooking," "Clauding," and things like that, Claude felt like a genuine advancement, and the results from simple to complex prompts proved it, with models ranging from Haiku to Opus to Fable.',
+          "At one point, it seemed like Anthropic released one update after another; there was a new high to experience every day.",
+          "Where I've found Claude especially useful is when you pair it with a project in your IDE or terminal and let it execute commands directly on your system that's when the real magic happens.",
+          "Although I would say the current Fable 5 lacks the firepower that the first release had.",
+        ],
+        footnote: '# Number of times "Claude" was said: 5',
+      },
+    ],
+    postscript: "It's been a while, I had to actually sit and type this. No AI.",
   },
 ];

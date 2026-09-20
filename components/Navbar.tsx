@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { PERSONAL_INFO } from '../constants';
 import { useIsMobile } from '../hooks/useIsMobile';
 
 const Navbar: React.FC = () => {
@@ -14,8 +13,8 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const navLinks = ['About', 'Projects', 'Skills', 'Debug Logs', 'Contact'];
-  const navHrefs = ['#about', '#projects', '#skills', '#logs', '#contact'];
+  const navLinks = ['Work', 'Services', 'AI Thoughts', 'Book a Call'];
+  const navHrefs = ['#work', '#services', '#thoughts', '#book'];
 
   return (
     <>
@@ -39,11 +38,11 @@ const Navbar: React.FC = () => {
         )}
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer" className="cta-outline" style={{ padding: '8px 20px', fontSize: 10 }}>
-            <i className="fab fa-github"></i>{!isMobile && ' GitHub'}
+          <a href="#book" className="cta-primary" style={{ padding: '10px 20px', fontSize: 10 }}>
+            Book a call
           </a>
           {isMobile && (
-            <button onClick={() => setMenuOpen(o => !o)} style={{ fontSize: 18, color: '#0a0a0a', padding: 4 }}>
+            <button onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} style={{ fontSize: 18, color: '#0a0a0a', padding: 4 }}>
               <i className={`fas fa-${menuOpen ? 'times' : 'bars'}`}></i>
             </button>
           )}

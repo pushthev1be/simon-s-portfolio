@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='800' font-size='16' text-anchor='middle' fill='%2322c55e'%3ESO%3C/text%3E%3C/svg%3E">
   <title>Simon Olawuyi — Full-Stack Engineer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Full-stack engineer building AI products, web apps and browser games. See selected work and book a 30-minute call.">
+  <meta property="og:title" content="Simon Olawuyi — Full-Stack Engineer">
+  <meta property="og:description" content="AI products, web apps and games that ship. See my work and book a call.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
@@ -68,6 +71,16 @@
       border: 1.5px solid #d0d0d0; transition: all 0.2s; cursor: pointer;
     }
     .cta-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .pill.static { cursor: default; }
+    .pill.static:hover { border-color: #e5e5e5; color: #666; background: none; }
+    .work-card { transition: border-color 0.2s, box-shadow 0.2s; }
+    .work-card:hover { border-color: var(--accent) !important; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .cover-img { transition: transform 0.5s ease; }
+    .work-card:hover .cover-img { transform: scale(1.03); }
+    .footer-link { font-size: 12px; color: #888; transition: color 0.15s; }
+    .footer-link:hover { color: #22c55e; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { .reveal { transition: none; opacity: 1; transform: none; } * { animation: none !important; } }
     .section-num { font-size: 11px; font-weight: 700; color: #ccc; letter-spacing: 0.1em; }
   </style>
 <script type="importmap">
@@ -80,7 +93,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
   <div id="root"></div>
