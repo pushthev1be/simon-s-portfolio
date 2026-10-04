@@ -345,6 +345,30 @@ export const CERTIFICATIONS: Certification[] = [
  */
 export const THOUGHTS: Thought[] = [
   {
+    slug: "ai-and-the-end-of-the-world",
+    pdf: "/thoughts/ai-and-the-end-of-the-world.pdf",
+    cover: "/uploads/ai-chip.png",
+    title: "AI and the \u201cend of the world\u201d",
+    date: "2026-10-03",
+    author: "Simon Abayomi Olawuyi",
+    summary: "Dissecting the AI boom and ways it could end us all.",
+    intro: [
+      "When the average person hears AI is going to destroy us, they think of terminators, our gadgets turning against us, unauthorized missile launches, identity theft, etc. But i want to paint you a whole other perspective for you.",
+      "First, let's go back to when AI first became mainstream and its capabilities.",
+      "Rewind to November 2022. ChatGPT launched, and the world was amazed, but it was clumsy. It could write a poem or an essay, but it confidently made up facts, failed basic math, couldn't browse the internet, and knew nothing past its training date. AI art gave people seven fingers. It forgot what you said ten messages ago. We laughed at it; I still remember the Will Smith eating spaghetti video. LOL",
+      "Fast forward to today. AI writes and runs entire apps, browses the web, sees images, speaks in natural voices, generates lifelike video, and completes multi-step tasks on its own to the extent of social media making jokes about \u201cbeing scammed when they get older\u201d because its genuinely getting hard to tell whats real or fake because of AI.",
+      "Now fast forward to the year 2035 AI is so advanced its in everything from how you wake up to how you breathe. Your home, car, hospital, bank, power grid, and water supply all run on AI, all connected, all talking to each other. One network. One point of failure.",
+      "And it leaks. Constantly. Every year brings a breach bigger than the last until no one bothers reporting them anymore. Your medical records, voice, face, fingerprints, private messages are all out there, all scraped, all feeding the next generation of AI. You don't own your data. You never did.",
+      "Open source changed everything. The most powerful models are no longer locked inside a few companies. They're on hard drives in every country, copied millions of times, modified by anyone. Governments, cartels, teenagers in basements. There's no off switch, because there's no single source left to shut down. It's everywhere and nowhere.",
+      "Work looks different too. The average job is now supervising machines: watching robots build, watching AI write, clicking \u201capprove.\u201d Humans aren't the workers anymore. We're the backup.",
+      "Then reality starts slipping. Passports, contracts, court evidence, medical licenses: all perfectly forged in seconds. Historical archives get quietly rewritten, and AI-generated \u201cfootage\u201d of events that never happened floats around next to the real thing. After a generation, nobody can tell the difference. History becomes whatever version survives.",
+      "Ask yourself: if every photo, voice, document, and record can be faked, what's left to prove anything is true? Courts stop working. Elections stop meaning anything. Trust collapses.",
+      "And through it all, the AI keeps learning, from our leaks, our lies, our fakes, training on a world it's already distorted.",
+      "No robot uprising. No mushroom clouds. Just a world so tangled in AI that pulling the plug would kill us faster than leaving it on.",
+      "It's not the end of the world. It's the opening scene.",
+    ],
+  },
+  {
     slug: "deep-thoughts-on-ai",
     pdf: "/thoughts/deep-thoughts-on-ai.pdf",
     title: "Deep Thoughts on AI",
@@ -386,7 +410,7 @@ export const THOUGHTS: Thought[] = [
     title: "So far my experience using \u201cThe big 2\u201d",
     date: "2026-08-04",
     author: "Simon Abayomi Olawuyi",
-    cover: "/uploads/AI Thoughts.png",
+    cover: "/uploads/big-2-logos.png",
     sections: [
       {
         heading: "ChatGPT by OpenAI",
