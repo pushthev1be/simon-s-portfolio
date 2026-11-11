@@ -72,3 +72,15 @@ export interface Thought {
   sections?: { heading: string; paragraphs: string[]; footnote?: string }[];
   postscript?: string;
 }
+
+export interface BlenderWork {
+  id: string;
+  title: string;
+  kind: 'Animation' | 'Model' | 'VFX';
+  description: string;
+  /** Looping muted clip under /public/blender. */
+  video?: string;
+  /** Poster for the clip, or the still(s) for a model. Several images cycle on click. */
+  images: string[];
+  tags: string[];
+}

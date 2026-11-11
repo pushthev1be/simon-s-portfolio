@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export type Route = { page: 'home' } | { page: 'thoughts'; slug?: string };
+export type Route = { page: 'home' } | { page: 'thoughts'; slug?: string } | { page: 'mcp' };
 
 function parse(hash: string): Route {
+  if (/^#\/mcp-setup\/?$/.test(hash)) return { page: 'mcp' };
   const m = hash.match(/^#\/thoughts(?:\/([\w-]+))?\/?$/);
   return m ? { page: 'thoughts', slug: m[1] } : { page: 'home' };
 }

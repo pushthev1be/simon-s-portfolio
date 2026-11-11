@@ -5,6 +5,8 @@ import Projects from './components/Projects';
 import Services from './components/Services';
 import Thoughts from './components/Thoughts';
 import ThoughtsPage from './components/ThoughtsPage';
+import Blender3D from './components/Blender3D';
+import McpSetupPage from './components/McpSetupPage';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
 import { useRoute } from './hooks/useRoute';
@@ -15,11 +17,11 @@ const App: React.FC = () => {
 
   // Hash routing: keep scroll position sensible when switching pages.
   useEffect(() => {
-    const id = route.page === 'thoughts' ? (slug ? `thought-${slug}` : null) : decodeURIComponent(window.location.hash.slice(1));
+    const id = route.page === 'thoughts' ? (slug ? `thought-${slug}` : null) : route.page === 'mcp' ? null : decodeURIComponent(window.location.hash.slice(1));
     const t = requestAnimationFrame(() => {
       const el = id ? document.getElementById(id) : null;
       if (el) el.scrollIntoView();
-      else if (route.page === 'thoughts') window.scrollTo(0, 0);
+      else if (route.page !== 'home') window.scrollTo(0, 0);
     });
     return () => cancelAnimationFrame(t);
   }, [route.page, slug]);
@@ -29,10 +31,13 @@ const App: React.FC = () => {
       <Navbar />
       {route.page === 'thoughts' ? (
         <ThoughtsPage slug={slug} />
+      ) : route.page === 'mcp' ? (
+        <McpSetupPage />
       ) : (
         <main>
           <Hero />
           <Projects />
+          <Blender3D />
           <Services />
           <Thoughts />
           <Booking />

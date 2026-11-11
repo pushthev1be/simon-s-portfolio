@@ -13,8 +13,8 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const navLinks = ['Work', 'Services', 'AI Thoughts', 'Book a Call'];
-  const navHrefs = ['#work', '#services', '#thoughts', '#book'];
+  const navLinks = ['Work', '3D', 'Services', 'AI Thoughts', 'MCP Guide', 'Book a Call'];
+  const navHrefs = ['#work', '#3d', '#services', '#thoughts', '#/mcp-setup', '#book'];
 
   return (
     <>
