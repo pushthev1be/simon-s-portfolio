@@ -7,6 +7,8 @@ import Thoughts from './components/Thoughts';
 import ThoughtsPage from './components/ThoughtsPage';
 import Blender3D from './components/Blender3D';
 import McpSetupPage from './components/McpSetupPage';
+import JumpStrip from './components/JumpStrip';
+import SectionRail from './components/SectionRail';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
 import { useRoute } from './hooks/useRoute';
@@ -36,6 +38,8 @@ const App: React.FC = () => {
       ) : (
         <main>
           <Hero />
+          <JumpStrip />
+          <SectionRail />
           <Projects />
           <Blender3D />
           <Services />

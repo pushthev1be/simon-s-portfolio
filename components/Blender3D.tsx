@@ -46,14 +46,14 @@ const Stills: React.FC<{ images: string[]; title: string }> = ({ images, title }
 );
 
 const WorkCard: React.FC<{ work: BlenderWork; wide?: boolean }> = ({ work, wide }) => (
-  <article className="reveal work-card" style={{ border: '1px solid #e8e8e8', overflow: 'hidden', display: 'flex', flexDirection: 'column', gridColumn: wide ? '1 / -1' : undefined }}>
+  <article className="reveal work-card" style={{ border: '1px solid var(--charcoal-line)', background: 'var(--charcoal-2)', overflow: 'hidden', display: 'flex', flexDirection: 'column', gridColumn: wide ? '1 / -1' : undefined }}>
     <div style={{ aspectRatio: work.video || work.images.length < 2 ? '16/9' : '2.5/1', background: work.video ? '#2b2b2b' : '#cdcfce', overflow: 'hidden', position: 'relative' }}>
       {work.video ? <Clip src={work.video} poster={work.images[0]} title={work.title} /> : <Stills images={work.images} title={work.title} />}
-      <span style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(255,255,255,0.92)', padding: '4px 10px', fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#16a34a' }}>{work.kind}</span>
+      <span style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(28,28,31,0.88)', padding: '4px 10px', fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-hi)' }}>{work.kind}</span>
     </div>
     <div style={{ padding: '18px 20px 20px', display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
-      <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em' }}>{work.title}</h3>
-      <p style={{ fontSize: 12, color: '#555', lineHeight: 1.7 }}>{work.description}</p>
+      <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#fafafa' }}>{work.title}</h3>
+      <p style={{ fontSize: 12, color: '#a1a1aa', lineHeight: 1.7 }}>{work.description}</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 'auto', paddingTop: 6 }}>
         {work.tags.map(t => <span key={t} className="pill static">{t}</span>)}
       </div>
@@ -67,13 +67,13 @@ const Blender3D: React.FC = () => {
   const works = filter === 'All' ? BLENDER_WORKS : BLENDER_WORKS.filter(w => w.kind === filter);
 
   return (
-    <section id="3d" style={{ padding: isMobile ? '80px 20px' : '112px 48px', borderBottom: '1px solid #e8e8e8' }}>
+    <section id="3d" className="dark" style={{ padding: isMobile ? '80px 20px' : '112px 48px', borderBottom: '1px solid var(--charcoal-line)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 16, flexWrap: 'wrap', paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 24 }}>
+        <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 16, flexWrap: 'wrap', paddingBottom: 24, borderBottom: '1px solid var(--charcoal-line)', marginBottom: 24 }}>
           <div>
-            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 }}>Blender</div>
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent-hi)', marginBottom: 12 }}>Blender</div>
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(36px,5vw,60px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>3D &amp; Animation</h2>
-            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginTop: 14, maxWidth: 620 }}>
+            <p style={{ fontSize: 13, color: '#a1a1aa', lineHeight: 1.7, marginTop: 14, maxWidth: 620 }}>
               Models, combat animations and effects I built in Blender for my Roblox game, Project Powerhouse. Much of it was made by driving Blender from an AI agent over MCP.
             </p>
           </div>

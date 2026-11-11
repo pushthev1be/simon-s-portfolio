@@ -1,66 +1,75 @@
-
 import React, { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { useRoute } from '../hooks/useRoute';
+import { SECTIONS, useActiveSection } from '../hooks/useActiveSection';
 
+/** Charcoal bar that stays readable over any section, and lights up the section you're in. */
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
   const isMobile = useIsMobile();
+  const route = useRoute();
+  const onHome = route.page === 'home';
+  const section = useActiveSection(onHome);
+  const active = onHome ? section : route.page;
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', fn);
+    const fn = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    };
+    fn();
+    window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
-  }, []);
-
-  const navLinks = ['Work', '3D', 'Services', 'AI Thoughts', 'MCP Guide', 'Book a Call'];
-  const navHrefs = ['#work', '#3d', '#services', '#thoughts', '#/mcp-setup', '#book'];
+  }, [route.page]);
 
   return (
     <>
-      <nav style={{
+      <nav className="site-nav" style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: isMobile ? '0 20px' : '0 48px', height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled || menuOpen ? 'rgba(255,255,255,0.97)' : 'transparent',
-        borderBottom: scrolled || menuOpen ? '1px solid #e8e8e8' : '1px solid transparent',
-        backdropFilter: scrolled || menuOpen ? 'blur(16px)' : 'none',
-        transition: 'all 0.3s ease',
       }}>
-        <a href="#top" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em', color: '#0a0a0a', textDecoration: 'none' }}>SO</a>
+        <a href="#top" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em', color: '#fff', textDecoration: 'none' }}>
+          SO<span style={{ color: 'var(--accent-hi)' }}>.</span>
+        </a>
 
         {!isMobile && (
-          <div style={{ display: 'flex', gap: 36 }}>
-            {navLinks.map((label, i) => (
-              <a key={label} href={navHrefs[i]} className="nav-link">{label}</a>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {SECTIONS.map(s => (
+              <a key={s.id} href={s.href} className={`nav-link${active === s.id ? ' active' : ''}`} aria-current={active === s.id ? 'true' : undefined}>
+                {s.label}
+              </a>
             ))}
           </div>
         )}
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <a href="#book" className="cta-primary" style={{ padding: '10px 20px', fontSize: 10 }}>
+          <a href="#book" className="cta-primary nav-cta" style={{ padding: '10px 20px', fontSize: 10 }}>
             Book a call
           </a>
           {isMobile && (
-            <button onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} style={{ fontSize: 18, color: '#0a0a0a', padding: 4 }}>
+            <button onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} style={{ fontSize: 18, color: '#fff', padding: 4 }}>
               <i className={`fas fa-${menuOpen ? 'times' : 'bars'}`}></i>
             </button>
           )}
         </div>
+
+        {/* how far down the page you are */}
+        <div aria-hidden style={{ position: 'absolute', left: 0, bottom: 0, height: 2, width: `${progress * 100}%`, background: 'var(--accent-hi)', transition: 'width 0.1s linear' }} />
       </nav>
 
-      {/* Mobile dropdown */}
       {isMobile && menuOpen && (
-        <div style={{ position: 'fixed', top: 64, left: 0, right: 0, zIndex: 99, background: '#fff', borderBottom: '1px solid #e8e8e8', padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 0 }}>
-          {navLinks.map((label, i) => (
+        <div style={{ position: 'fixed', top: 64, left: 0, right: 0, zIndex: 99, background: 'var(--charcoal)', borderBottom: '1px solid var(--charcoal-line)', padding: '8px 20px 16px', display: 'flex', flexDirection: 'column' }}>
+          {SECTIONS.map((s, i) => (
             <a
-              key={label}
-              href={navHrefs[i]}
-              className="nav-link"
+              key={s.id}
+              href={s.href}
+              className={`nav-link${active === s.id ? ' active' : ''}`}
               onClick={() => setMenuOpen(false)}
-              style={{ padding: '14px 0', borderBottom: '1px solid #f0f0f0', display: 'block' }}
+              style={{ padding: '14px 4px', borderBottom: '1px solid var(--charcoal-line)', display: 'flex', gap: 14 }}
             >
-              {label}
+              <span style={{ color: '#71717a' }}>{String(i + 1).padStart(2, '0')}</span>{s.label}
             </a>
           ))}
         </div>
