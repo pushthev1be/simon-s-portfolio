@@ -28,7 +28,7 @@ export const ThoughtTeaser: React.FC<{ post: Thought }> = ({ post }) => (
     <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: 12 }}>{post.title}</h3>
     <p style={{ fontSize: 12, color: '#555', lineHeight: 1.7, marginBottom: 20 }}>{post.summary}</p>
     <div style={{ marginTop: 'auto', paddingTop: 14, borderTop: '1px solid #f0f0f0', display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      <a href={`#/thoughts/${post.slug}`} style={LINK}>Read →</a>
+      <a href={`/thoughts/#${post.slug}`} style={LINK}>Read →</a>
       <DownloadLink post={post} />
     </div>
   </article>

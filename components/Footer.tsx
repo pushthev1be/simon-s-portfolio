@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 44 : 64, fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 0.95 }}>
             Have something<br />to build?
           </h2>
-          <a href="#book" className="cta-primary" style={{ background: '#16a34a', borderColor: '#16a34a' }}>Book a 30-min call</a>
+          <a href="/#book" className="cta-primary" style={{ background: '#16a34a', borderColor: '#16a34a' }}>Book a 30-min call</a>
         </div>
         <div style={{ paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 28px' }}>

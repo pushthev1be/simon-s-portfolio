@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 
 /** The site's main stops, in page order. `page` entries open their own route instead of scrolling. */
 export const SECTIONS: { id: string; label: string; href: string; page?: 'thoughts' | 'mcp' }[] = [
-  { id: 'work', label: 'Work', href: '#work' },
-  { id: '3d', label: '3D', href: '#3d' },
-  { id: 'services', label: 'Services', href: '#services' },
-  { id: 'thoughts', label: 'AI Thoughts', href: '#thoughts', page: 'thoughts' },
-  { id: 'mcp', label: 'MCP Guide', href: '#/mcp-setup', page: 'mcp' },
-  { id: 'book', label: 'Book a Call', href: '#book' },
+  { id: 'work', label: 'Work', href: '/#work' },
+  { id: '3d', label: '3D', href: '/#3d' },
+  { id: 'services', label: 'Services', href: '/#services' },
+  { id: 'thoughts', label: 'AI Thoughts', href: '/#thoughts', page: 'thoughts' },
+  { id: 'mcp', label: 'MCP Guide', href: '/mcp-setup/', page: 'mcp' },
+  { id: 'book', label: 'Book a Call', href: '/#book' },
 ];
 
 /** Which home-page section is in the middle of the screen right now ('' above the first one). */

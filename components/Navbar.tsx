@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
         padding: isMobile ? '0 20px' : '0 48px', height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <a href="#top" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em', color: '#fff', textDecoration: 'none' }}>
+        <a href="/" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em', color: '#fff', textDecoration: 'none' }}>
           SO<span style={{ color: 'var(--accent-hi)' }}>.</span>
         </a>
 
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
         )}
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <a href="#book" className="cta-primary nav-cta" style={{ padding: '10px 20px', fontSize: 10 }}>
+          <a href="/#book" className="cta-primary nav-cta" style={{ padding: '10px 20px', fontSize: 10 }}>
             Book a call
           </a>
           {isMobile && (
