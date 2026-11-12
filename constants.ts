@@ -440,6 +440,23 @@ export const THOUGHTS: Thought[] = [
 // Blender work for Project Powerhouse (Roblox). Clips are short, muted and looped; see public/blender.
 export const BLENDER_WORKS: BlenderWork[] = [
   {
+    id: "tunecity-cars",
+    title: "TuneCity car fleet",
+    kind: "Model",
+    description: "Twelve low-poly cars for my car-tuning game TuneCity, from a 90s hot hatch to a desert pickup. Each body is generated in Blender from blueprint curves (side profile, beltline, sill, plan width), with lamps and grilles projected onto the curved nose. Every car splits into a hinged hood, an engine in the bay and four rolling wheels, and exports to GLB/FBX/OBJ as a game-ready pack.",
+    images: ["/blender/tunecity-hatch.jpg", "/blender/tunecity-pickup.jpg", "/blender/tunecity-gt.jpg"],
+    tags: ["Modeling", "Procedural (Python)", "Game-ready", "Asset pack"],
+  },
+  {
+    id: "tunecity-dyno",
+    title: "TuneCity dyno states",
+    kind: "Animation",
+    description: "The same cars rendered as stacked pixel-art layers so the game can show any build: hood, engine, wheels, brakes and exhaust swap independently. This clip is the dyno: start-up with light flicker, idle shake and fumes, then revs spinning the driven wheels on the rollers.",
+    video: "/blender/tunecity-dyno.mp4",
+    images: ["/blender/tunecity-dyno.jpg"],
+    tags: ["Pixel art pipeline", "Layered sprites", "Game states"],
+  },
+  {
     id: "police-suit",
     title: "Police suit + wind cape",
     kind: "Model",
