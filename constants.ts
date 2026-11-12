@@ -15,6 +15,7 @@ export const PERSONAL_INFO = {
   itch: "https://pushthev1be.itch.io/",
   twitter: "https://x.com/pushthevibe",
   calendly: "https://calendly.com/nomispeter12/30min",
+  buymeacoffee: "https://buymeacoffee.com/pushthev1bee",
 };
 
 export const STATS = [

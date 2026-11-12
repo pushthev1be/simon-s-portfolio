@@ -8,6 +8,7 @@ const LINKS = [
   { label: 'GitHub', href: PERSONAL_INFO.github },
   { label: 'itch.io', href: PERSONAL_INFO.itch },
   { label: 'X', href: PERSONAL_INFO.twitter },
+  { label: 'Buy me a coffee', href: PERSONAL_INFO.buymeacoffee },
 ];
 
 const Footer: React.FC = () => {
