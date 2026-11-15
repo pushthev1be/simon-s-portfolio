@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export type Route = { page: 'home' } | { page: 'thoughts'; slug?: string } | { page: 'mcp' };
+export type Route = { page: 'home' } | { page: 'thoughts'; slug?: string } | { page: 'mcp' } | { page: 'auras' } | { page: 'badges' };
 
 /**
  * Real URLs (indexable by search engines): /mcp-setup/ and /thoughts/ (a post opens with /thoughts/#slug).
@@ -8,6 +8,8 @@ export type Route = { page: 'home' } | { page: 'thoughts'; slug?: string } | { p
  */
 function parse(path: string, hash: string): Route {
   if (/^\/mcp-setup\/?$/.test(path)) return { page: 'mcp' };
+  if (/^\/aura-emitters\/?$/.test(path)) return { page: 'auras' };
+  if (/^\/github-badges\/?$/.test(path)) return { page: 'badges' };
   if (/^\/thoughts\/?$/.test(path)) {
     const slug = hash.match(/^#([\w-]+)$/)?.[1];
     return { page: 'thoughts', slug };

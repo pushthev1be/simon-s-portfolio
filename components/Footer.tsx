@@ -6,6 +6,7 @@ const LINKS = [
   { label: 'Email', href: `mailto:${PERSONAL_INFO.email}` },
   { label: 'LinkedIn', href: PERSONAL_INFO.linkedin },
   { label: 'GitHub', href: PERSONAL_INFO.github },
+  { label: 'GitHub badges', href: '/github-badges/' },
   { label: 'itch.io', href: PERSONAL_INFO.itch },
   { label: 'X', href: PERSONAL_INFO.twitter },
   { label: 'Buy me a coffee', href: PERSONAL_INFO.buymeacoffee },
@@ -26,7 +27,7 @@ const Footer: React.FC = () => {
         <div style={{ paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 28px' }}>
             {LINKS.map(l => (
-              <a key={l.label} href={l.href} target={l.href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className="footer-link">{l.label}</a>
+              <a key={l.label} href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="footer-link">{l.label}</a>
             ))}
           </div>
           <div style={{ fontSize: 10, color: '#666', letterSpacing: '0.12em', textTransform: 'uppercase' }}>© 2026 Simon Olawuyi · {PERSONAL_INFO.location}</div>

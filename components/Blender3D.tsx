@@ -77,7 +77,10 @@ const Blender3D: React.FC = () => {
               Models, combat animations and effects I built in Blender for my Roblox game, Project Powerhouse. Much of it was made by driving Blender from an AI agent over MCP.
             </p>
           </div>
-          <a href="/mcp-setup/" className="cta-outline" style={{ padding: '10px 18px' }}>Set up Blender MCP →</a>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <a href="/aura-emitters/" className="cta-outline" style={{ padding: '10px 18px' }}>Aura emitters →</a>
+            <a href="/mcp-setup/" className="cta-outline" style={{ padding: '10px 18px' }}>Set up Blender MCP →</a>
+          </div>
         </div>
         <div className="reveal" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
           {FILTERS.map(f => (

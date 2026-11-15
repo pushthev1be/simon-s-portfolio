@@ -7,6 +7,8 @@ import Thoughts from './components/Thoughts';
 import ThoughtsPage from './components/ThoughtsPage';
 import Blender3D from './components/Blender3D';
 import McpSetupPage from './components/McpSetupPage';
+import AuraEmittersPage from './components/AuraEmittersPage';
+import GithubBadgesPage from './components/GithubBadgesPage';
 import JumpStrip from './components/JumpStrip';
 import SectionRail from './components/SectionRail';
 import Booking from './components/Booking';
@@ -19,7 +21,7 @@ const App: React.FC = () => {
 
   // Hash routing: keep scroll position sensible when switching pages.
   useEffect(() => {
-    const id = route.page === 'thoughts' ? (slug ? `thought-${slug}` : null) : route.page === 'mcp' ? null : decodeURIComponent(window.location.hash.slice(1));
+    const id = route.page === 'thoughts' ? (slug ? `thought-${slug}` : null) : route.page === 'mcp' || route.page === 'auras' || route.page === 'badges' ? null : decodeURIComponent(window.location.hash.slice(1));
     const t = requestAnimationFrame(() => {
       const el = id ? document.getElementById(id) : null;
       if (el) el.scrollIntoView();
@@ -35,6 +37,10 @@ const App: React.FC = () => {
         <ThoughtsPage slug={slug} />
       ) : route.page === 'mcp' ? (
         <McpSetupPage />
+      ) : route.page === 'auras' ? (
+        <AuraEmittersPage />
+      ) : route.page === 'badges' ? (
+        <GithubBadgesPage />
       ) : (
         <main>
           <Hero />

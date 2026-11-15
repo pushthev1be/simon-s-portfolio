@@ -14,6 +14,16 @@ const PAGES = [
     description: 'Step-by-step guide with screenshots to connect Blender and Roblox Studio to Claude Code, Claude Desktop, Gemini CLI and Codex over MCP, plus a copy-paste setup prompt.',
   },
   {
+    path: 'aura-emitters',
+    title: 'Fire & Lightning Aura Emitters in Roblox — Simon Olawuyi',
+    description: 'How the fire and lightning aura particle emitters in my Roblox game are built: placement, settings, code and the rules for auras that read well in a fight, with screenshots.',
+  },
+  {
+    path: 'github-badges',
+    title: 'GitHub Achievements Tracker — Simon Olawuyi',
+    description: 'My GitHub achievements and what each badge needs, refreshed daily by a small script and GitHub Action.',
+  },
+  {
     path: 'thoughts',
     title: 'AI Thoughts — Simon Olawuyi',
     description: 'Writing by Simon Olawuyi on AI, ChatGPT vs Claude, and where it is all going.',

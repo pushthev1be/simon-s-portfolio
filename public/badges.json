@@ -1,0 +1,123 @@
+{
+  "user": "pushthev1be",
+  "updated": "2026-11-15T19:16:12.724Z",
+  "badges": [
+    {
+      "id": "pull-shark",
+      "name": "Pull Shark",
+      "how": "Open a pull request that gets merged.",
+      "tiers": [
+        2,
+        16,
+        128,
+        1024
+      ],
+      "unit": "merged pull requests",
+      "earned": true,
+      "tier": 3,
+      "image": "https://github.githubassets.com/assets/pull-shark-silver-0643f87ac9fd.png",
+      "count": 185,
+      "next": 1024,
+      "approximate": false
+    },
+    {
+      "id": "pair-extraordinaire",
+      "name": "Pair Extraordinaire",
+      "how": "Co-author commits in a merged pull request (a \"Co-authored-by:\" trailer naming you, or you naming a real collaborator).",
+      "tiers": [
+        1,
+        10,
+        24,
+        48
+      ],
+      "unit": "co-authored merged pull requests",
+      "earned": true,
+      "tier": 4,
+      "image": "https://github.githubassets.com/assets/pair-extraordinaire-gold-5335a3b8ae7d.png",
+      "count": 704,
+      "next": null,
+      "approximate": true
+    },
+    {
+      "id": "quickdraw",
+      "name": "Quickdraw",
+      "how": "Close an issue or pull request within 5 minutes of opening it.",
+      "tiers": [
+        1
+      ],
+      "unit": "times",
+      "earned": true,
+      "tier": 1,
+      "image": "https://github.githubassets.com/assets/quickdraw-default-39c6aec8ff89.png",
+      "count": null,
+      "next": null,
+      "approximate": false
+    },
+    {
+      "id": "yolo",
+      "name": "YOLO",
+      "how": "Merge a pull request without a code review.",
+      "tiers": [
+        1
+      ],
+      "unit": "times",
+      "earned": true,
+      "tier": 1,
+      "image": "https://github.githubassets.com/assets/yolo-default-be0bbff04951.png",
+      "count": null,
+      "next": null,
+      "approximate": false
+    },
+    {
+      "id": "starstruck",
+      "name": "Starstruck",
+      "how": "Own a repository that other people star.",
+      "tiers": [
+        16,
+        128,
+        512,
+        4096
+      ],
+      "unit": "stars on your most-starred repository",
+      "earned": false,
+      "tier": 0,
+      "image": "",
+      "count": 1,
+      "next": 16,
+      "approximate": false
+    },
+    {
+      "id": "galaxy-brain",
+      "name": "Galaxy Brain",
+      "how": "Have answers accepted in GitHub Discussions.",
+      "tiers": [
+        2,
+        8,
+        16,
+        32
+      ],
+      "unit": "accepted answers",
+      "earned": false,
+      "tier": 0,
+      "image": "",
+      "count": null,
+      "next": 2,
+      "approximate": false
+    },
+    {
+      "id": "public-sponsor",
+      "name": "Public Sponsor",
+      "how": "Sponsor an open-source maintainer through GitHub Sponsors.",
+      "tiers": [
+        1
+      ],
+      "unit": "sponsorships",
+      "earned": false,
+      "tier": 0,
+      "image": "",
+      "count": null,
+      "next": 1,
+      "approximate": false
+    }
+  ]
+}
