@@ -1,6 +1,6 @@
 {
   "user": "pushthev1be",
-  "updated": "2026-11-15T19:16:12.724Z",
+  "updated": "2026-11-15T19:27:49.251Z",
   "badges": [
     {
       "id": "pull-shark",
@@ -16,7 +16,7 @@
       "earned": true,
       "tier": 3,
       "image": "https://github.githubassets.com/assets/pull-shark-silver-0643f87ac9fd.png",
-      "count": 185,
+      "count": 39,
       "next": 1024,
       "approximate": false
     },
@@ -34,7 +34,7 @@
       "earned": true,
       "tier": 4,
       "image": "https://github.githubassets.com/assets/pair-extraordinaire-gold-5335a3b8ae7d.png",
-      "count": 704,
+      "count": 206,
       "next": null,
       "approximate": true
     },
