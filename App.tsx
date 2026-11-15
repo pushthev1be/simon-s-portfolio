@@ -10,6 +10,7 @@ import McpSetupPage from './components/McpSetupPage';
 import AuraEmittersPage from './components/AuraEmittersPage';
 import GithubBadgesPage from './components/GithubBadgesPage';
 import JumpStrip from './components/JumpStrip';
+import Guides from './components/Guides';
 import SectionRail from './components/SectionRail';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           <JumpStrip />
           <SectionRail />
           <Projects />
+          <Guides />
           <Blender3D />
           <Services />
           <Thoughts />

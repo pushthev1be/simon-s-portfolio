@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { MoreGuides } from './Guides';
 
 type Client = 'claude-code' | 'claude-desktop' | 'gemini' | 'codex';
 const CLIENTS: { id: Client; label: string }[] = [
@@ -287,6 +288,7 @@ const McpSetupPage: React.FC = () => {
             </div>
           ))}
         </section>
+        <MoreGuides current="mcp" />
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { MoreGuides } from './Guides';
 
 type Badge = {
   id: string; name: string; how: string; tiers: number[]; unit: string;
@@ -84,6 +85,7 @@ const GithubBadgesPage: React.FC = () => {
             </section>
           </>
         )}
+        <MoreGuides current="badges" />
       </div>
     </main>
   );

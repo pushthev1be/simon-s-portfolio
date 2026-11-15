@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { MoreGuides } from './Guides';
 
 const label: React.CSSProperties = { fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 };
 const h2: React.CSSProperties = { fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(26px,3.4vw,36px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 14 };
@@ -139,6 +140,7 @@ const AuraEmittersPage: React.FC = () => {
             </div>
           ))}
         </section>
+        <MoreGuides current="auras" />
       </div>
     </main>
   );

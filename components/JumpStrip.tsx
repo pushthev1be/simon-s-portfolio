@@ -7,7 +7,7 @@ const BLURBS: Record<string, string> = {
   '3d': 'Blender models & clips',
   services: 'What I can build',
   thoughts: 'Writing on AI',
-  mcp: 'Blender + Studio MCP setup',
+  guides: 'Auras, MCP setup, GitHub',
   book: '30 minutes, free',
 };
 
@@ -23,7 +23,7 @@ const JumpStrip: React.FC = () => {
               <span style={{ color: 'var(--accent-hi)', fontSize: 10 }}>{String(i + 1).padStart(2, '0')}</span>
               <span>{s.label}</span>
               <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.02em', textTransform: 'none', color: '#a1a1aa' }}>{BLURBS[s.id]}</span>
-              <span className="jump-arrow" style={{ position: 'absolute', top: 18, right: 16 }}>{s.page === 'mcp' ? '→' : '↓'}</span>
+              <span className="jump-arrow" style={{ position: 'absolute', top: 18, right: 16 }}>↓</span>
             </a>
           ))}
         </div>

@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
   const route = useRoute();
   const onHome = route.page === 'home';
   const section = useActiveSection(onHome);
-  const active = onHome ? section : route.page;
+  const active = onHome ? section : (route.page === 'mcp' || route.page === 'auras' || route.page === 'badges') ? 'guides' : route.page;
 
   useEffect(() => {
     const fn = () => {
