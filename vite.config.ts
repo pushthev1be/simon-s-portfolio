@@ -9,6 +9,26 @@ const SITE = 'https://simonolawuyi.com';
  *  own title, description and canonical link; the router picks the page from the path. */
 const PAGES = [
   {
+    path: 'work',
+    title: 'Work — AI products & browser games — Simon Olawuyi',
+    description: 'Products and games Simon Olawuyi has shipped: Oracle Odds AI, StudyGenius AI, DevBrain, CrossCheck, TuneCity and Naija 5s.',
+  },
+  {
+    path: 'art',
+    title: 'Art & Assets — Blender 3D, animation & pixel-art packs — Simon Olawuyi',
+    description: 'Blender models, combat animations and VFX for a Roblox game, plus pixel-art sprite packs for game developers on itch.io.',
+  },
+  {
+    path: 'guides',
+    title: 'Guides & Writing — Simon Olawuyi',
+    description: 'Step-by-step build guides (Roblox aura emitters, Blender and Roblox Studio MCP setup, GitHub badges) and writing on AI.',
+  },
+  {
+    path: 'hire',
+    title: 'Hire me — book a free 30-minute call — Simon Olawuyi',
+    description: 'AI products, full-stack web apps and games built for you. Book a free 30-minute call with Simon Olawuyi.',
+  },
+  {
     path: 'mcp-setup',
     title: 'Blender & Roblox Studio MCP Setup Guide (Claude, Gemini, Codex) — Simon Olawuyi',
     description: 'Step-by-step guide with screenshots to connect Blender and Roblox Studio to Claude Code, Claude Desktop, Gemini CLI and Codex over MCP, plus a copy-paste setup prompt.',

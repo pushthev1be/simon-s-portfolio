@@ -16,13 +16,13 @@ const Footer: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <footer id="contact" style={{ background: '#0a0a0a', color: '#fff', padding: isMobile ? '64px 20px 32px' : '88px 48px 40px' }}>
+    <footer id="contact" style={{ position: 'relative', zIndex: 1, background: '#0a0a0a', color: '#fff', padding: isMobile ? '64px 20px 32px' : '88px 48px 40px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', gap: 32, paddingBottom: 48, borderBottom: '1px solid #1a1a1a' }}>
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: isMobile ? 44 : 64, fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 0.95 }}>
             Have something<br />to build?
           </h2>
-          <a href="/#book" className="cta-primary" style={{ background: '#16a34a', borderColor: '#16a34a' }}>Book a 30-min call</a>
+          <a href="/hire/#book" className="cta-primary">Book a 30-min call</a>
         </div>
         <div style={{ paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 28px' }}>

@@ -171,7 +171,7 @@ const McpSetupPage: React.FC = () => {
           <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(38px,6vw,64px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Blender + Roblox Studio MCP setup</h1>
           <p style={{ ...body, marginTop: 18, maxWidth: 680 }}>
             MCP lets an AI agent drive Blender and Roblox Studio directly: build and edit models, rig, animate, render, read and write scripts.
-            It is how I build most of the work in my <a href="/#3d" style={{ color: '#16a34a', fontWeight: 700 }}>3D section</a>.
+            It is how I build most of the work in my <a href="/art/" style={{ color: '#16a34a', fontWeight: 700 }}>Art &amp; Assets page</a>.
             This page sets it up for Claude Code, Claude Desktop, Gemini CLI and Codex CLI. The quickest route is to copy the prompt below into your agent and let it do the setup for you.
           </p>
         </header>

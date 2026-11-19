@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useRoute } from '../hooks/useRoute';
-import { SECTIONS, useActiveSection } from '../hooks/useActiveSection';
+import { SECTIONS } from '../sections';
 
-/** Charcoal bar that stays readable over any section, and lights up the section you're in. */
+/** Charcoal bar that stays readable over any page, and lights up the page you're on. */
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const isMobile = useIsMobile();
   const route = useRoute();
-  const onHome = route.page === 'home';
-  const section = useActiveSection(onHome);
-  const active = onHome ? section : (route.page === 'mcp' || route.page === 'auras' || route.page === 'badges') ? 'guides' : route.page;
+  // each page lights up its group; the guide pages and AI Thoughts belong to Guides & Writing
+  const active = route.page === 'work' || route.page === 'art' || route.page === 'hire' ? route.page
+    : route.page === 'home' ? '' : 'guides';
 
   useEffect(() => {
     const fn = () => {
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
         {!isMobile && (
           <div style={{ display: 'flex', gap: 6 }}>
             {SECTIONS.map(s => (
-              <a key={s.id} href={s.href} className={`nav-link${active === s.id ? ' active' : ''}`} aria-current={active === s.id ? 'true' : undefined}>
+              <a key={s.id} href={s.href} className={`nav-link${active === s.id ? ' active' : ''}`} aria-current={active === s.id ? 'page' : undefined}>
                 {s.label}
               </a>
             ))}
@@ -45,8 +45,8 @@ const Navbar: React.FC = () => {
         )}
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <a href="/#book" className="cta-primary nav-cta" style={{ padding: '10px 20px', fontSize: 10 }}>
-            Book a call
+          <a href="/hire/#book" className="cta-primary" style={{ padding: '10px 18px', fontSize: 10 }}>
+            <i className="far fa-calendar"></i> Book a call
           </a>
           {isMobile && (
             <button onClick={() => setMenuOpen(o => !o)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} style={{ fontSize: 18, color: '#fff', padding: 4 }}>
