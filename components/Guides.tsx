@@ -37,27 +37,6 @@ const Card: React.FC<{ g: typeof GUIDES[number] }> = ({ g }) => (
   </a>
 );
 
-/** Home-page section: every guide page as a big card, so none of them hide behind a small link. */
-const Guides: React.FC = () => {
-  const isMobile = useIsMobile();
-  return (
-    <section id="guides" style={{ padding: isMobile ? '80px 20px' : '112px 48px', borderBottom: '1px solid #e8e8e8' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div className="reveal" style={{ paddingBottom: 24, borderBottom: '1px solid #e8e8e8', marginBottom: 28 }}>
-          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 12 }}>Guides</div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(36px,5vw,60px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>Guides &amp; build notes</h2>
-          <p style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginTop: 14, maxWidth: 620 }}>
-            Write-ups of how I build things, with screenshots and code you can copy.
-          </p>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 20 }}>
-          {GUIDES.map(g => <Card key={g.id} g={g} />)}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 /** Bottom of each guide page: the other guides, so a reader can keep going. */
 export const MoreGuides: React.FC<{ current: string }> = ({ current }) => {
   const isMobile = useIsMobile();
@@ -72,4 +51,3 @@ export const MoreGuides: React.FC<{ current: string }> = ({ current }) => {
   );
 };
 
-export default Guides;

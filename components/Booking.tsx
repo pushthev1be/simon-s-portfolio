@@ -32,11 +32,10 @@ const Booking: React.FC = () => {
   }, []);
 
   return (
-    <section id="book" style={{ padding: isMobile ? '80px 20px' : '112px 48px', borderBottom: '1px solid #e8e8e8' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: isMobile ? 40 : 72, alignItems: 'start' }}>
+    <div id="book" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: isMobile ? 28 : 48, alignItems: 'start' }}>
         <div className="reveal">
-          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#16a34a', marginBottom: 16 }}>Book a Call</div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(36px,5vw,60px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 20 }}>Let's talk about your project</h2>
+          <div className="eyebrow">Book a call</div>
+          <h3 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(22px,2.4vw,28px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 14 }}>Let's talk about your project</h3>
           <p style={{ fontSize: 13, color: '#555', lineHeight: 1.8, marginBottom: 28 }}>
             A free 30-minute call. Tell me what you're building and where you're stuck, and I'll tell you honestly how I'd approach it.
           </p>
@@ -54,15 +53,14 @@ const Booking: React.FC = () => {
           </div>
         </div>
 
-        <div className="reveal reveal-delay-1" style={{ border: '1px solid #e8e8e8', minHeight: 700, position: 'relative' }}>
+        <div className="reveal reveal-delay-1" style={{ border: '1px solid #e8e8e8', background: '#fff', minHeight: 700, position: 'relative' }}>
           <div ref={host} style={{ minWidth: 0, height: isMobile ? 760 : 700, position: 'relative', zIndex: 1 }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 16, padding: 24, textAlign: 'center' }}>
             <div style={{ fontSize: 12, color: '#777' }}>Loading calendar…</div>
             <a href={PERSONAL_INFO.calendly} target="_blank" rel="noopener noreferrer" className="cta-primary">Open scheduling page ↗</a>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 };
 
